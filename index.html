@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours HTML5 / CSS3</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/default.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <aside>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#aside_navbar"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="aside_navbar"></div>
+    </nav>
+  </aside>
+  <main class="my-4 container">
+    <h1>Les langages du Web</h1>
+    <article>
+      <h2>Séance 1</h2>
+
+      <section>
+        <h3>Introduction</h3>
+
+        <div>
+          <figure>
+            <img src="images/HTML-CSS_languages.jpeg" alt="Les langages du Web">
+            <figcaption>Les langages du Web</figcaption>
+          </figure>
+        </div>
+
+        <p>Les langages HTML et CSS sont les principaux langages du Web.</p>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <figure>
+              <img src="images/html_css.jpg" alt="Rôle">
+              <figcaption>Rôle des langages HTML et CSS</figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-6">
+            <figure>
+              <img src="images/html_css_importance.jpg" alt="Importance">
+              <figcaption>Importance des langages HTML et CSS</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <p>L'importance des deux langages est schématisée dans les deux photos précédentes :</p>
+        <ul>
+          <li>Le <strong>HTML</strong>est utilisé pour construire la structure (le squelette) d'une page Web.</li>
+          <li>Le <strong>CSS</strong> est utilisé pour embellir et donner une apparence attractive de la page Web.</li>
+        </ul>
+        <p>Les deux langages sont complémentaires.</p>
+      </section>
+
+      <section>
+        <h3>Structure d'une page Web</h3>
+
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h4>Explication</h4>
+        <div class="row">
+          <div class="col-md-4 border-bottom my-2">
+            <pre><code class="language-html">&lt;!DOCTYPE html&gt;</code></pre>
+          </div>
+          <div class="col-md-8 border-bottom my-2">Indique au navigateur que la page utilise la version 5, selon W3C, du
+            langage HTML</div>
+          <div class="col-md-4 border-bottom my-2">
+            <pre><code class="language-html">&lt;html lang=&quot;en&quot;&gt;
+...
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="col-md-8 border-bottom my-2">Indique le début et la fin du document HTML, ainsi que la langue
+            utilisée dans ce
+            document, utile pour
+            les screen readers.</div>
+          <div class="col-md-4 border-bottom my-2">
+            <pre><code class="language-html">&lt;head&gt;
+...
+&lt;/head&gt;</code></pre>
+          </div>
+          <div class="col-md-8 border-bottom my-2">
+            <p>Marque l'entête du document HTML. C'est la partie invisible de la page Web qui contient des
+              instructions destinées au navigateur pour l'aider à bien afficher la page.</p>
+            <p>On y trouve par exemple :</p>
+            <p>
+            <pre><code class="language-html">&lt;meta charset=&quot;UTF-8&quot;&gt;</code></pre>
+            Indique l'encodage des caractères, l'UTF-8 est un encodage universel qui permet d'afficher toutes les
+            langues (Latin, Arabe, Chinois, Japonais, etc.).
+            </p>
+            <p>
+            <pre><code class="language-html">&lt;meta name=&quot;viewport&quot; 
+content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
+            Indique que la page peut-être rendue sur un mobile sans subir d'agrandissements, ni de
+            rétricissements.
+            </p>
+            <p>
+            <pre><code class="language-html">&lt;title&gt;Document&lt;/title&gt;</code></pre>
+            Indique le texte qui s'affiche dans la barre du titre du navigateur.
+            </p>
+          </div>
+          <div class="col-md-4 border-bottom my-2">
+            <pre><code class="language-html">&lt;body&gt;
+  ...
+&lt;/body&gt;</code></pre>
+          </div>
+          <div class="col-md-8 border-bottom my-2">
+            Tout le contenu qui sera affiché dans le navigateur doit être écrit à l'intérieur de cette balise.
+          </div>
+        </div>
+
+      </section>
+
+      <section>
+        <h3>Les premières balises</h3>
+
+        <p>Nous voulons concevoir la page web suivante :</p>
+
+        <figure>
+          <img src="images/page_sample.png" alt="Exemple de page Web">
+          <figcaption>Exemple de page Web</figcaption>
+        </figure>
+
+        <p>La page est composée de plusieurs éléments visibles :</p>
+        <ul>
+          <li>Une liste non ordonnée</li>
+          <li>Un titre et un sous-titre</li>
+          <li>Des paragraphes</li>
+          <li>Des images</li>
+        </ul>
+
+        <h4>Liste non ordonnée</h4>
+
+        <p>Pour construire la liste ci-dessus on peut écrire le code suivant:</p>
+        <pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;What is it?&lt;/li&gt;
+  &lt;li&gt;What is used for?&lt;/li&gt;
+  &lt;li&gt;What types?&lt;/li&gt;
+  &lt;li&gt;What is composed of?&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h4>Les titres</h4>
+        <p>Le langage HTML supporte 6 niveaux pour les titres, le titre principal est indiqué par un titre niveau 1
+          <code>&lt;h1&gt;</code>.
+        </p>
+
+        <p>Les titres montrés dans l'image ci-dessus sont écrites en HTML :</p>
+        <pre><code class="language-html">&lt;h1&gt;Computers&lt;/h1&gt;
+&lt;h2&gt;What is a computer?&lt;/h2&gt;</code></pre>
+
+        <h4>Les paragraphes</h4>
+        <p>La balise <code>&lt;p&gt;...&lt;/p&gt;</code> délimite les paragaphes dans un document HTML. Anisi, les
+          paragraphes ci-dessus peuvent être écrites en HTML de la façon suivante :</p>
+        <pre><code class="language-html">&lt;p&gt;A computer is a &lt;b&gt;machine&lt;/b&gt; that can be instructed to carry out sequences of arithmetic or logical
+  operations automatically via &lt;i&gt;computer programming&lt;/i&gt;. Modern computers have the ability to follow
+  generalized sets of
+  operations, called &lt;b&gt;programs&lt;/b&gt;. These programs enable computers to perform an extremely wide range
+  of tasks.&lt;/p&gt;
+&lt;p&gt;A &quot;complete&quot; computer including the hardware, the operating system (main software), and peripheral equipment
+  required and used for &quot;full&quot; operation can be referred to as a &lt;b&gt;computer system&lt;/b&gt;. This term may
+  as well be used for a group of computers that are connected and work together, in particular a &lt;u&gt;computer
+    network&lt;/u&gt; or &lt;u&gt;computer cluster&lt;/u&gt;.&lt;/p&gt;</code></pre>
+
+        <h4>Mise en forme</h4>
+        <p>On remarque qu'il y a des mots <u>soulignés</u>, en <b>gras</b> et en <i>italique</i>.</p>
+        <p>Nous utilisons la balise :</p>
+        <ul>
+          <li><code>&lt;u&gt;soulign&eacute;&lt;/u&gt;</code> pour souligner un texte.</li>
+          <li><code>&lt;b&gt;gras&lt;/b&gt;</code> pour mettre un texte en gras.</li>
+          <li><code>&lt;i&gt;Italique&lt;/i&gt;</code> pour mettre un texte en italique.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Application</h3>
+
+        <p>On veut concevoir un site composé de quatre pages web :</p>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <figure>
+              <a href="images/page01.png" target="_blank"><img src="images/page01-thumb.png" alt="index.html"></a>
+              <figcaption>index.html</figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-3">
+            <figure>
+              <a href="images/page02.png" target="_blank"><img src="images/page02-thumb.png" alt="uses.html"></a>
+              <figcaption>uses.html</figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-3">
+            <figure>
+              <a href="images/page03.png" target="_blank"><img src="images/page03-thumb.png" alt="types.html"></a>
+              <figcaption>types.html</figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-3">
+            <figure>
+              <a href="images/page04.png" target="_blank"><img src="images/page04-thumb.png" alt="parts.html"></a>
+              <figcaption>parts.html</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+  <footer class="d-print-none bg-dark text-white p-2">
+    <div class="text-center">Page créée avec ♥ par Mohamed Anis MANI</div>
+    <div class="text-center small">Année scolaire : 2020/2021</div>
+  </footer>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/highlight.pack.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/pages.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+
+</html>

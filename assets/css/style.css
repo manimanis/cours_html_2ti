@@ -1,0 +1,25 @@
+body {
+    counter-reset: figures;
+}
+
+figure {
+    counter-increment: figures;
+    text-align: center;
+}
+
+figure figcaption {
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+figure figcaption::before {
+    content: 'Figure ' counter(figures) ', ';
+}
+
+figure img {
+    max-width: 100%;
+}
+
+main {
+    min-height: calc(100vh - 165px);
+}
