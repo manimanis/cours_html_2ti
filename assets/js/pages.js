@@ -2,15 +2,8 @@ $(() => {
   const aside = $('aside #aside_navbar');
   const articles = $('main article');
   const articles_count = articles.length;
-  const STORAGE_KEY = location.pathname + '#art_obj';
-  const art_obj = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
-    article: null,
-    article_index: 0,
-    sections: null,
-    section: null,
-    section_index: 0
-  };
-
+  const url = new URL(document.location);
+  const hash = url.hash;
   const link_list = $('<ul>')
     .addClass('navbar-nav mr-auto')
     .appendTo(aside);
@@ -63,8 +56,6 @@ $(() => {
               .text(title)
               .appendTo(sect_list);
           });
-
-          console.log(sections);
       }
     });
 
@@ -103,6 +94,24 @@ $(() => {
       section_index: art_obj.section_index
     }));
   };
+
+  const STORAGE_KEY = location.pathname + '#art_obj';
+  let art_obj = null;
+  if (hash == '') {
+    art_obj = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+      article: null,
+      article_index: 0,
+      sections: null,
+      section: null,
+      section_index: 0
+    };
+  } else {
+    const hashParts = hash.split('-');
+    art_obj = {
+      article_index: parseInt(hashParts[1]) - 1,
+      section_index: parseInt(hashParts[2]) - 1
+    };
+  }
 
   const links = aside.find('a')
     .click(e => {
