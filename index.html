@@ -151,7 +151,10 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
 
         <h4>Liste non ordonnée</h4>
 
-        <p>Pour construire la liste ci-dessus on peut écrire le code suivant:</p>
+        <p>Pour construire la liste :</p>
+        <p class="border"><img src="images/balise_ul_li.png" alt="Balises ul et li"></p>
+
+        <p>On peut écrire le code suivant:</p>
         <pre><code class="language-html">&lt;ul&gt;
   &lt;li&gt;What is it?&lt;/li&gt;
   &lt;li&gt;What is used for?&lt;/li&gt;
@@ -159,18 +162,28 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
   &lt;li&gt;What is composed of?&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
+        <p>Dans ce code <code>&lt;ul&gt;...&lt;/ul&gt;</code> indiquent le début et la fin de la liste non ordonnée
+          (ul=unordered list).</p>
+
+        <p>Tandis que <code>&lt;li&gt;...&lt;/li&gt;</code> indiquent les éléments de la liste (li = list item).</p>
+
         <h4>Les titres</h4>
         <p>Le langage HTML supporte 6 niveaux pour les titres, le titre principal est indiqué par un titre niveau 1
           <code>&lt;h1&gt;</code>.
         </p>
 
-        <p>Les titres montrés dans l'image ci-dessus sont écrites en HTML :</p>
+        <p>Les titres montrés dans l'image : </p>
+        <p class="border"><img src="images/balises_h1_h2.png" alt="Balises h1 et h2"></p>
+
+        <p>Sont écrites en HTML :</p>
         <pre><code class="language-html">&lt;h1&gt;Computers&lt;/h1&gt;
 &lt;h2&gt;What is a computer?&lt;/h2&gt;</code></pre>
 
         <h4>Les paragraphes</h4>
         <p>La balise <code>&lt;p&gt;...&lt;/p&gt;</code> délimite les paragaphes dans un document HTML. Anisi, les
-          paragraphes ci-dessus peuvent être écrites en HTML de la façon suivante :</p>
+          paragraphes ci-dessous :</p>
+        <p class="border"><img src="images/balise_p.png" alt="Balises h1 et h2"></p>
+        <p>Peuvent être écrites en HTML de la façon suivante :</p>
         <pre><code class="language-html">&lt;p&gt;A computer is a &lt;b&gt;machine&lt;/b&gt; that can be instructed to carry out sequences of arithmetic or logical
   operations automatically via &lt;i&gt;computer programming&lt;/i&gt;. Modern computers have the ability to follow
   generalized sets of
@@ -185,10 +198,30 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         <p>On remarque qu'il y a des mots <u>soulignés</u>, en <b>gras</b> et en <i>italique</i>.</p>
         <p>Nous utilisons la balise :</p>
         <ul>
-          <li><code>&lt;u&gt;soulign&eacute;&lt;/u&gt;</code> pour souligner un texte.</li>
-          <li><code>&lt;b&gt;gras&lt;/b&gt;</code> pour mettre un texte en gras.</li>
-          <li><code>&lt;i&gt;Italique&lt;/i&gt;</code> pour mettre un texte en italique.</li>
+          <li><code>&lt;u&gt;soulign&eacute;&lt;/u&gt;</code> pour souligner un texte : <u>souligné</u>.</li>
+          <li><code>&lt;b&gt;Gras&lt;/b&gt;</code> pour mettre un texte en gras : <b>Gras</b>.</li>
+          <li><code>&lt;i&gt;Italique&lt;/i&gt;</code> pour mettre un texte en italique : <i>Italique</i>.</li>
         </ul>
+
+        <h4>Les images</h4>
+        <p>La balise <code>img</code> est utilisée pour insérer une image.</p>
+        <p>Exemple :</p>
+        <pre><code class="language-html">&lt;img src=&quot;images/html_css_logo.png&quot; alt=&quot;Logo HTML et CSS&quot;&gt;</code></pre>
+
+        <p>L'attribut <code>src</code> indique l'emplacement de l'image.</p>
+        <p>L'attribut <code>alt</code> indique le texte à afficher en cas de problème d'affichage de l'image.</p>
+
+        <p>Pour insérer les images de la figure suivante :</p>
+
+        <p><img src="images/balises_img.png" alt="Balise img"></p>
+
+        <p>On peut écrire le code HTML suivant :</p>
+        <pre><code class="language-html">&lt;p&gt;
+  &lt;img src=&quot;images/computer01_thumb.jpg&quot; alt=&quot;NeXT box&quot;&gt;
+  &lt;img src=&quot;images/computer02_thumb.jpg&quot; alt=&quot;Terminal&quot;&gt;
+  &lt;img src=&quot;images/computer03_thumb.jpg&quot; alt=&quot;Macintosh&quot;&gt;
+  &lt;img src=&quot;images/computer04_thumb.jpg&quot; alt=&quot;Modern Laptop&quot;&gt;
+&lt;/p&gt;</code></pre>
       </section>
 
       <section>
@@ -231,6 +264,8 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         <p>Télécharger le texte et les images nécessaires pour réaliser ce TP : <a
             href="assets/downloads/Computers_nocss.zip">Fichiers du
             TP</a></p>
+        <p>Les fichiers complets peuvent aussi être téléchargés à travers ce lien : <a
+            href="assets/downloads/computer_w_html.zip">Fichiers complets</a></p>
       </section>
     </article>
   </main>
