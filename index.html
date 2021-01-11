@@ -58,7 +58,8 @@
         <p>L'importance des deux langages est schématisée dans les deux photos précédentes :</p>
         <ul>
           <li>Le <strong>HTML</strong>est utilisé pour construire la structure (le squelette) d'une page Web.</li>
-          <li>Le <strong>CSS</strong> est utilisé pour embellir et donner une apparence attractive de la page Web.</li>
+          <li>Le <strong>CSS</strong> est utilisé pour embellir et donner une apparence attractive de la page Web.
+          </li>
         </ul>
         <p>Les deux langages sont complémentaires.</p>
       </section>
@@ -83,17 +84,21 @@
           <div class="col-md-4 border-bottom my-2">
             <pre><code class="language-html">&lt;!DOCTYPE html&gt;</code></pre>
           </div>
-          <div class="col-md-8 border-bottom my-2">Indique au navigateur que la page utilise la version 5, selon W3C, du
-            langage HTML</div>
+          <div class="col-md-8 border-bottom my-2">Indique au navigateur que la page utilise la version 5, selon
+            W3C, du
+            langage HTML
+          </div>
           <div class="col-md-4 border-bottom my-2">
             <pre><code class="language-html">&lt;html lang=&quot;en&quot;&gt;
 ...
 &lt;/html&gt;</code></pre>
           </div>
-          <div class="col-md-8 border-bottom my-2">Indique le début et la fin du document HTML, ainsi que la langue
+          <div class="col-md-8 border-bottom my-2">Indique le début et la fin du document HTML, ainsi que la
+            langue
             utilisée dans ce
             document, utile pour
-            les screen readers.</div>
+            les screen readers.
+          </div>
           <div class="col-md-4 border-bottom my-2">
             <pre><code class="language-html">&lt;head&gt;
 ...
@@ -105,11 +110,12 @@
             <p>On y trouve par exemple :</p>
             <p>
             <pre><code class="language-html">&lt;meta charset=&quot;UTF-8&quot;&gt;</code></pre>
-            Indique l'encodage des caractères, l'UTF-8 est un encodage universel qui permet d'afficher toutes les
+            Indique l'encodage des caractères, l'UTF-8 est un encodage universel qui permet d'afficher toutes
+            les
             langues (Latin, Arabe, Chinois, Japonais, etc.).
             </p>
             <p>
-            <pre><code class="language-html">&lt;meta name=&quot;viewport&quot; 
+            <pre><code class="language-html">&lt;meta name=&quot;viewport&quot;
 content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
             Indique que la page peut-être rendue sur un mobile sans subir d'agrandissements, ni de
             rétricissements.
@@ -266,6 +272,298 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
             TP</a></p>
         <p>Les fichiers complets peuvent aussi être téléchargés à travers ce lien : <a
             href="assets/downloads/computer_w_html.zip">Fichiers complets</a></p>
+      </section>
+    </article>
+    <article>
+      <h2>Séance 2</h2>
+
+      <section>
+        <h3>Les liens</h3>
+
+        <h4>Définition</h4>
+
+        <p>Le mot <strong>HTML</strong> est l'<em>HyperText Markup Language</em>, langage de balisage hypertexte.
+          D'après
+          Wikipedia :</p>
+        <blockquote class="blockquote">
+          <p>Un hypertexte est un document ou un ensemble de documents contenant des unités d'information liées entre
+            elles par des hyperliens. Ce système permet à l'utilisateur d'aller directement à l'unité qui l'intéresse, à
+            son gré, d'une façon non linéaire.</p>
+          <footer class="blockquote-footer">Source <cite title="Source Title">Wikipedia</cite></footer>
+        </blockquote>
+        <p>
+        <figure>
+          <img src="images/hyperliens.png" alt="Hyperlien">
+          <figcaption>Hyperlien (Hyperlink)</figcaption>
+        </figure>
+        </p>
+
+        <h4>Types</h4>
+        <p>Il existe trois types de liens :</p>
+        <ul>
+          <li><strong>Les liens externes</strong> : utilisés pour référencer des ressources dans d'autres sites.</li>
+          <li><strong>Les liens internes</strong> : utilisés pour référencer les ressources dans un même site.</li>
+          <li><strong>Les liens nommés</strong> (signets) : utilisés pour référencer des parties d'une même page.</li>
+        </ul>
+        <pre><code class="language_html">&lt;!-- Lien externe --&gt;
+&lt;a href=&quot;https://www.google.com&quot;&gt;Ouvrir google&lt;/a&gt;
+&lt;!-- Lien intene --&gt;
+&lt;a href=&quot;page2.html&quot;&gt;Ouvrir page 2&lt;/a&gt;
+&lt;!-- Lien nomm&eacute; --&gt;
+&lt;a href=&quot;#section_2&quot;&gt;Section 2&lt;/a&gt;</code></pre>
+
+        <p><a href="links.html" target="_blank">Exemple types de liens</a></p>
+
+        <h4>Attributs</h4>
+
+        <p>La balise <code>&lt;a&gt;</code> comporte trois parties importantes :</p>
+        <ul>
+          <li>L'attribut <code>href=&quot;https://www.google.com&quot;</code> indique la cible du lien.</li>
+          <li>L'attribut <code>target=&quot;fenetre&quot;</code> indique le nom de la fenêtre ou un mot clé (_blank)
+            dans
+            laquelle le lien sera ouvert.</li>
+          <li>Le texte/l'image qui servira de lien cliquable.</li>
+        </ul>
+
+        <p>
+        <figure>
+          <img src="images/a-tag.gif" alt="Définition d'un lien hypertexte">
+          <figcaption>Définition d'un lien hypertexte</figcaption>
+        </figure>
+        </p>
+      </section>
+
+      <section>
+        <h3>Application 1</h3>
+
+        <p>Ouvrir le site Web que nous avons commencé, puis :</p>
+        <ul>
+          <li>Compléter les liens hypertextes qui permettent de se déplacer d'une page à l'autre.
+            <p>
+            <figure>
+              <img src="images/links_list.png" alt="Les liens">
+              <figcaption>Les liens</figcaption>
+            </figure>
+            </p>
+          </li>
+          <li>Créer des liens hypertextes dans la page <strong>index.html</strong> ,à l'aide des images
+            "computerXX_thumb.jpg", pour afficher une version plus grande de ces images dans une nouvelle page.
+            <p>
+            <figure>
+              <img src="images/resize-computer01.png" alt="Agrandir les images">
+              <figcaption>Agrandir les images</figcaption>
+            </figure>
+            </p>
+          </li>
+          <li>Refaire le même travail dans la page <strong>parts.html</strong> avec les composants de l'ordinateur.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Balises sémantiques + Application 2</h3>
+
+        <h4>Balises sémantiques</h4>
+        <p>Le langage a introduit beaucoup de nouvelles balises sémantiques (structurelles) pour permettre <strong>un
+            découpage plus précis de votre page web en délimitant des zones spécifiques</strong>. La figure suivante
+          présente ces balises d'une façon graphique :</p>
+
+        <div>
+          <figure>
+            <img src="images/semantic_tags.png" alt="Balises sémantiques">
+            <figcaption>Balises sémantique</figcaption>
+          </figure>
+        </div>
+
+        <h4>Application 2</h4>
+        <p>Nous voulons utiliser ces balises pour mieux structurer notre site web de la façon suivante :</p>
+
+        <div>
+          <figure>
+            <img src="images/computer_page_structure.png" alt="Structure de notre site Web²">
+            <figcaption>Structure de notre site</figcaption>
+          </figure>
+        </div>
+
+        <p>Appliquer cette structure à toutes les pages de votre site.</p>
+      </section>
+
+      <section>
+        <h3>Feuilles de style (CSS)</h3>
+
+        <h4>Introduction</h4>
+
+        <p>
+          Les feuilles de style en cascade sont définis par le site Mozilla Developper Network (MDN). comme suit :
+        </p>
+        <div>
+          <blockquote class="blockquote">
+            <p>Les Cascading StyleSheets — ou CSS — (Feuilles de style en cascade) sont la
+              première technique à apprendre après le HTML. Alors que HTML s'utilise pour définir la structure et la
+              sémantique du contenu, les CSS sont employées pour composer et déterminer l'apparence de ce contenu.</p>
+            <p>Ainsi par exemple, vous utiliserez les CSS pour modifier les polices, la couleur, la taille et
+              l'espacement de votre contenu, pour le répartir sur plusieurs colonnes ou bien pour ajouter des animations
+              et autres fonctionnalités décoratives.</p>
+          </blockquote>
+          <footer class="blockquote-footer">Source <cite title="Source Title">MDN</cite></footer>
+        </div>
+
+        <h4>Premiers pas</h4>
+
+        <p>Il existe trois méthodes pour appliquer du CSS à un document HTML. La plus utilisée est celle qui consiste à
+          :</p>
+        <ul>
+          <li>Créer un fichier <strong>style.css</strong> externe,</li>
+          <li>Et le lier au fichier HTML à travers la balise <code>&lt;link&gt;</code>, qui doit figurer dans la partie
+            <code>&lt;head&gt;</code> du document HTML.
+          </li>
+        </ul>
+
+        <h5>Exemple</h5>
+        <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</code></pre>
+      </section>
+
+      <section>
+        <h3>Application 3</h3>
+
+        <h4>Liaison entre le fichier HTMl et le fichier CSS</h4>
+        <p>On demande de :</p>
+        <ul>
+          <li>Créer un fichier nommé <code>style.css</code>, dans votre site.</li>
+          <li>Lier ce fichiers dans toutes vos pages HTML, en utilisant le code suivant :
+            <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</code></pre>
+            <p><strong>Attention :</strong> veillez à mettre ce code dans la partie
+              <code>&lt;head&gt;</code> du document.
+            </p>
+          </li>
+          <li>Taper le texte suivant dans le fichier <code>style.css</code>, puis observer le changement effectué :
+            <pre><code class="language-css">body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 10pt;
+    margin: 0;
+}</code></pre>
+          </li>
+        </ul>
+
+        <h4>Les règles CSS</h4>
+        <p>Le code tapé dans le fichier <code>css</code> est appelé une <strong>règle</strong>. Cette règle est
+          constituée de <strong>déclarations</strong> qui modifient les <strong>valeurs</strong> des
+          <strong>propriétés</strong> du document.
+        </p>
+
+        <div>
+          <figure>
+            <img src="images/css_rule.jpg" alt="Règle CSS">
+            <figcaption>Règle CSS</figcaption>
+          </figure>
+        </div>
+
+        <h4>Les sélecteurs</h4>
+        <p>Au début de cette application, nous avons défini une règle avec pour le sélecteur <code>body</code>. Pour
+          mettre en forme le document il faudra utiliser d'autres sélecteurs.</p>
+
+        <ul>
+          <li>Définir la mise en forme du sélecteur <code>nav</code>, définir :
+            <ul>
+              <li>Une couleur d'arrère plan <code>background-color</code> (code couleur #3f51b5)</li>
+              <li>Une marge extérieure basse <code>margin-bottom</code> à 25 pixels</li>
+              <li>Une marge intérieure <code>padding</code> à 15 pixels</li>
+            </ul>
+            <pre><code class="language-css">nav {
+    background-color: #3f51b5;
+    margin-bottom: 25px;
+    padding: 15px;
+}
+</code></pre>
+          </li>
+          <li>Définir la mise en forme de la balise <code>ul</code> qui est à l'intérieur d'une balise <code>nav</code>,
+            c'est-à-dire <code>nav ul</code> :
+            <ul>
+              <li>Aligner la liste non ordonnée au centre de la page, définir la propriété <code>text-align</code> à
+                <code>center</code>
+              </li>
+              <li>Supprimer les bulles de la liste, définir la propriété <code>list-style</code> à <code>none</code>
+              </li>
+              <li>Supprimer les marges intérieures et extérieures, propriétés <code>margin</code> et
+                <code>padding</code>
+              </li>
+            </ul>
+            <pre><code class="language-css">nav ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}</code></pre>
+          </li>
+          <li>Mettre toutes les <code>li</code> de la liste précédente sur une même ligne, et définir une marge
+            extérieure horizontale de 20 pixels.
+            <pre><code class="language-css">nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}</code></pre>
+          </li>
+          <li>La couleur des liens devra être blanche et leur ôter le soulignement par défaut, qui est propre aux liens
+            hypertextes. Ajouter le soulignement, lorsque le lien est survolé :
+            <pre><code class="language-css">nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}</code></pre>
+          </li>
+          <li>Continuer la mise en page de la page pour qu'elle ressemble à peu-près à ce qui suit :
+            <div>
+              <figure>
+                <img src="images/mise_en_page_computers.png" alt="Mise en page finale de la page">
+                <figcaption>Mise en page finale de la page</figcaption>
+              </figure>
+            </div>
+            <p>Les sélecteurs qu'il faudra changer, copier/coller ces règles et essayer de les compléter :</p>
+            <pre><code class="language-css">main {
+    /* marge extérieures droite et gauche : auto */
+    /* largeur 800px*/
+    /* hauteur minimale 100vh */
+    
+}
+
+main h1 {
+    /* alignement centré */
+    /* couleur du texte #3f51b5 */
+    
+}
+
+main h2 {
+    /* couleur du texte #E91E63 */
+
+}
+
+main h3 {
+    /* couleur du texte #795548 */
+
+}
+
+main strong {
+    /* couleur du texte #f44336*/
+
+}
+
+main img {
+    /* bordure noire de 1 pixel */
+    
+}
+
+footer {
+    /* couleur de remplissage #3f51b5 */
+    /* marge extérieure haut 25 pixels */
+    /* marge intérieure 15 pixels */
+    /* alignement centré */
+    /* couleur de texte blanche */
+    
+}</code></pre>
+          </li>
+        </ul>
+
       </section>
     </article>
   </main>
