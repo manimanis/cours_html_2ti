@@ -2,9 +2,28 @@ body {
   counter-reset: figures;
 }
 
+h1 {
+  text-align: center;
+  color: #e54d2e;
+}
+
+h2 {
+  color: #f16930;
+}
+
+h3 {
+  color: #0870b9;
+}
+
+h4 {
+  color: #33a8e3;
+}
+
 figure {
   counter-increment: figures;
   text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 figure figcaption {
@@ -29,9 +48,11 @@ blockquote {
   font-style: italic;
   padding: 1rem 0.5rem 1rem 2rem;
   background-color: #eee;
+  border: #666 solid 1px;
+  border-radius: 8px;
 }
 
-blockquote p  {
+blockquote p {
   margin: 0;
 }
 
@@ -59,37 +80,37 @@ article {
   .p-break {
     page-break-before: always;
   }
-  
   aside {
     display: none !important;
   }
-
   .container {
     max-width: initial !important;
     width: initial !important;
   }
-
   figure {
     page-break-inside: avoid;
   }
-
   figure img.h2cm {
     max-height: 2cm !important;
   }
-
   figure img.h3cm {
     max-height: 3cm !important;
   }
-
   figure img.h5cm {
     max-height: 5cm !important;
   }
-
   figure img.h7cm {
     max-height: 7cm !important;
   }
-
   figure img.h10cm {
     max-height: 10cm !important;
+  }
+
+  @page {
+    counter-increment: page;
+    counter-reset: page 1;
+    @top-right {
+      content: "Page " counter(page) " of " counter(pages);
+    }
   }
 }
