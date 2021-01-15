@@ -33,7 +33,7 @@
 
         <div>
           <figure>
-            <img src="images/HTML-CSS_languages.jpeg" alt="Les langages du Web">
+            <img src="images/HTML-CSS_languages.jpeg" alt="Les langages du Web" class="h3cm">
             <figcaption>Les langages du Web</figcaption>
           </figure>
         </div>
@@ -41,15 +41,15 @@
         <p>Les langages HTML et CSS sont les principaux langages du Web.</p>
 
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-6">
             <figure>
-              <img src="images/html_css.jpg" alt="Rôle">
+              <img src="images/html_css.jpg" alt="Rôle" class="h5cm">
               <figcaption>Rôle des langages HTML et CSS</figcaption>
             </figure>
           </div>
-          <div class="col-sm-6">
+          <div class="col-6">
             <figure>
-              <img src="images/html_css_importance.jpg" alt="Importance">
+              <img src="images/html_css_importance.jpg" alt="Importance" class="h5cm">
               <figcaption>Importance des langages HTML et CSS</figcaption>
             </figure>
           </div>
@@ -80,72 +80,51 @@
 &lt;/html&gt;</code></pre>
 
         <h4>Explication</h4>
-        <div class="row">
-          <div class="col-md-4 border-bottom my-2">
-            <pre><code class="language-html">&lt;!DOCTYPE html&gt;</code></pre>
-          </div>
-          <div class="col-md-8 border-bottom my-2">Indique au navigateur que la page utilise la version 5, selon
-            W3C, du
-            langage HTML
-          </div>
-          <div class="col-md-4 border-bottom my-2">
-            <pre><code class="language-html">&lt;html lang=&quot;en&quot;&gt;
+
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;</code></pre>
+        <p>Indique au navigateur que la page utilise la version 5, selon W3C, du langage HTML</p>
+
+
+        <pre><code class="language-html">&lt;html lang=&quot;en&quot;&gt;
 ...
 &lt;/html&gt;</code></pre>
-          </div>
-          <div class="col-md-8 border-bottom my-2">Indique le début et la fin du document HTML, ainsi que la
-            langue
-            utilisée dans ce
-            document, utile pour
-            les screen readers.
-          </div>
-          <div class="col-md-4 border-bottom my-2">
-            <pre><code class="language-html">&lt;head&gt;
+
+        <p>Indique le début et la fin du document HTML, ainsi que la
+          langue utilisée dans ce document, utile pour les screen readers.</p>
+
+        <pre><code class="language-html">&lt;head&gt;
 ...
 &lt;/head&gt;</code></pre>
-          </div>
-          <div class="col-md-8 border-bottom my-2">
-            <p>Marque l'entête du document HTML. C'est la partie invisible de la page Web qui contient des
-              instructions destinées au navigateur pour l'aider à bien afficher la page.</p>
-            <p>On y trouve par exemple :</p>
-            <p>
-            <pre><code class="language-html">&lt;meta charset=&quot;UTF-8&quot;&gt;</code></pre>
-            Indique l'encodage des caractères, l'UTF-8 est un encodage universel qui permet d'afficher toutes
-            les
-            langues (Latin, Arabe, Chinois, Japonais, etc.).
-            </p>
-            <p>
-            <pre><code class="language-html">&lt;meta name=&quot;viewport&quot;
+        <p>Marque l'entête du document HTML. C'est la partie invisible de la page Web qui contient des
+          instructions destinées au navigateur pour l'aider à bien afficher la page.</p>
+        <p>On y trouve par exemple :</p>
+        <pre><code class="language-html">&lt;meta charset=&quot;UTF-8&quot;&gt;</code></pre>
+        <p>Indique l'encodage des caractères, l'UTF-8 est un encodage universel qui permet d'afficher toutes
+          les langues (Latin, Arabe, Chinois, Japonais, etc.).</p>
+        <pre><code class="language-html">&lt;meta name=&quot;viewport&quot;
 content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
-            Indique que la page peut-être rendue sur un mobile sans subir d'agrandissements, ni de
-            rétricissements.
-            </p>
-            <p>
-            <pre><code class="language-html">&lt;title&gt;Document&lt;/title&gt;</code></pre>
-            Indique le texte qui s'affiche dans la barre du titre du navigateur.
-            </p>
-          </div>
-          <div class="col-md-4 border-bottom my-2">
-            <pre><code class="language-html">&lt;body&gt;
+        <p>Indique que la page peut-être rendue sur un mobile sans subir d'agrandissements, ni de
+          rétricissements.</p>
+        <pre><code class="language-html">&lt;title&gt;Document&lt;/title&gt;</code></pre>
+        <p>Indique le texte qui s'affiche dans la barre du titre du navigateur.</p>
+
+        <pre><code class="language-html">&lt;body&gt;
   ...
 &lt;/body&gt;</code></pre>
-          </div>
-          <div class="col-md-8 border-bottom my-2">
-            Tout le contenu qui sera affiché dans le navigateur doit être écrit à l'intérieur de cette balise.
-          </div>
-        </div>
-
+        <p>Tout le contenu qui sera affiché dans le navigateur doit être écrit à l'intérieur de cette balise.</p>
       </section>
 
-      <section>
+      <section class="p-break">
         <h3>Les premières balises</h3>
 
         <p>Nous voulons concevoir la page web suivante :</p>
 
-        <figure>
-          <img src="images/page_sample.png" alt="Exemple de page Web">
-          <figcaption>Exemple de page Web</figcaption>
-        </figure>
+        <div>
+          <figure>
+            <img src="images/page_sample.png" alt="Exemple de page Web">
+            <figcaption>Exemple de page Web</figcaption>
+          </figure>
+        </div>
 
         <p>La page est composée de plusieurs éléments visibles :</p>
         <ul>
@@ -155,10 +134,16 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
           <li>Des images</li>
         </ul>
 
-        <h4>Liste non ordonnée</h4>
+        <h4 class="p-break">Liste non ordonnée</h4>
 
         <p>Pour construire la liste :</p>
-        <p class="border"><img src="images/balise_ul_li.png" alt="Balises ul et li"></p>
+        <div>
+          <figure>
+            <img src="images/balise_ul_li.png" alt="Balises ul et li" class="h3cm">
+            <figcaption>Balises ul et li</figcaption>
+          </figure>
+        </div>
+
 
         <p>On peut écrire le code suivant:</p>
         <pre><code class="language-html">&lt;ul&gt;
@@ -179,7 +164,12 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         </p>
 
         <p>Les titres montrés dans l'image : </p>
-        <p class="border"><img src="images/balises_h1_h2.png" alt="Balises h1 et h2"></p>
+        <div>
+          <figure>
+            <img src="images/balises_h1_h2.png" alt="Balises h1 et h2" class="h2cm">
+            <figcaption>Balises h1 et h2, heading level 1 et level 2</figcaption>
+          </figure>
+        </div>
 
         <p>Sont écrites en HTML :</p>
         <pre><code class="language-html">&lt;h1&gt;Computers&lt;/h1&gt;
@@ -188,17 +178,25 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         <h4>Les paragraphes</h4>
         <p>La balise <code>&lt;p&gt;...&lt;/p&gt;</code> délimite les paragaphes dans un document HTML. Anisi, les
           paragraphes ci-dessous :</p>
-        <p class="border"><img src="images/balise_p.png" alt="Balises h1 et h2"></p>
+        <div>
+          <figure>
+            <img src="images/balise_p.png" alt="Balises p" class="h5cm">
+            <figcaption>Balises p, paragraph</figcaption>
+          </figure>
+        </div>
+
         <p>Peuvent être écrites en HTML de la façon suivante :</p>
-        <pre><code class="language-html">&lt;p&gt;A computer is a &lt;b&gt;machine&lt;/b&gt; that can be instructed to carry out sequences of arithmetic or logical
-  operations automatically via &lt;i&gt;computer programming&lt;/i&gt;. Modern computers have the ability to follow
-  generalized sets of
-  operations, called &lt;b&gt;programs&lt;/b&gt;. These programs enable computers to perform an extremely wide range
-  of tasks.&lt;/p&gt;
-&lt;p&gt;A &quot;complete&quot; computer including the hardware, the operating system (main software), and peripheral equipment
-  required and used for &quot;full&quot; operation can be referred to as a &lt;b&gt;computer system&lt;/b&gt;. This term may
-  as well be used for a group of computers that are connected and work together, in particular a &lt;u&gt;computer
-    network&lt;/u&gt; or &lt;u&gt;computer cluster&lt;/u&gt;.&lt;/p&gt;</code></pre>
+        <pre><code class="language-html">&lt;p&gt;A computer is a &lt;b&gt;machine&lt;/b&gt; that can be instructed to carry out 
+  sequences of arithmetic or logical operations automatically via &lt;i&gt;computer 
+  programming&lt;/i&gt;. Modern computers have the ability to follow generalized sets 
+  of operations, called &lt;b&gt;programs&lt;/b&gt;. These programs enable computers 
+  to perform an extremely wide range of tasks.&lt;/p&gt;
+&lt;p&gt;A &quot;complete&quot; computer including the hardware, the operating system 
+  (main software), and peripheral equipment required and used for &quot;full&quot; 
+  operation can be referred to as a &lt;b&gt;computer system&lt;/b&gt;. This term may
+  as well be used for a group of computers that are connected and work 
+  together, in particular a &lt;u&gt;computer network&lt;/u&gt; 
+  or &lt;u&gt;computer cluster&lt;/u&gt;.&lt;/p&gt;</code></pre>
 
         <h4>Mise en forme</h4>
         <p>On remarque qu'il y a des mots <u>soulignés</u>, en <b>gras</b> et en <i>italique</i>.</p>
@@ -218,8 +216,12 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         <p>L'attribut <code>alt</code> indique le texte à afficher en cas de problème d'affichage de l'image.</p>
 
         <p>Pour insérer les images de la figure suivante :</p>
-
-        <p><img src="images/balises_img.png" alt="Balise img"></p>
+        <div>
+          <figure>
+            <p><img src="images/balises_img.png" alt="Balise img" class="h5cm"></p>
+            <figcaption>Balise img</figcaption>
+          </figure>
+        </div>
 
         <p>On peut écrire le code HTML suivant :</p>
         <pre><code class="language-html">&lt;p&gt;
@@ -237,28 +239,28 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
 
 
         <div class="row">
-          <div class="col-sm-6 col-md-3">
+          <div class="col-3">
             <figure>
               <a href="images/page01.png" target="_blank"><img src="images/page01-thumb.png" alt="index.html"></a>
               <figcaption>index.html</figcaption>
             </figure>
             <p>Page 1, What is a computer?</p>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-3">
             <figure>
               <a href="images/page02.png" target="_blank"><img src="images/page02-thumb.png" alt="uses.html"></a>
               <figcaption>uses.html</figcaption>
             </figure>
             <p>Page 2, What a computer is used for?</p>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-3">
             <figure>
               <a href="images/page03.png" target="_blank"><img src="images/page03-thumb.png" alt="types.html"></a>
               <figcaption>types.html</figcaption>
             </figure>
             <p>Page 3, What are computers types?</p>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-3">
             <figure>
               <a href="images/page04.png" target="_blank"><img src="images/page04-thumb.png" alt="parts.html"></a>
               <figcaption>parts.html</figcaption>
@@ -293,7 +295,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         </blockquote>
         <p>
         <figure>
-          <img src="images/hyperliens.png" alt="Hyperlien">
+          <img src="images/hyperliens.png" alt="Hyperlien" class="h3cm">
           <figcaption>Hyperlien (Hyperlink)</figcaption>
         </figure>
         </p>
@@ -310,9 +312,11 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
 &lt;!-- Lien intene --&gt;
 &lt;a href=&quot;page2.html&quot;&gt;Ouvrir page 2&lt;/a&gt;
 &lt;!-- Lien nomm&eacute; --&gt;
-&lt;a href=&quot;#section_2&quot;&gt;Section 2&lt;/a&gt;</code></pre>
+&lt;a href=&quot;#section_2&quot;&gt;Section 2&lt;/a&gt;
+&lt;!-- La destination d&apos;un lien nomm&eacute; --&gt;
+&lt;h2 id=&quot;section_2&quot;&gt;Partie n&deg;2&lt;/h2&gt;</code></pre>
 
-        <p><a href="links.html" target="_blank">Exemple types de liens</a></p>
+        <p class="d-print-none"><a href="links.html" target="_blank">Exemples de types de liens</a></p>
 
         <h4>Attributs</h4>
 
@@ -327,7 +331,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
 
         <p>
         <figure>
-          <img src="images/a-tag.gif" alt="Définition d'un lien hypertexte">
+          <img src="images/a-tag.gif" alt="Définition d'un lien hypertexte" class="h3cm">
           <figcaption>Définition d'un lien hypertexte</figcaption>
         </figure>
         </p>
@@ -337,11 +341,11 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         <h3>Application 1</h3>
 
         <p>Ouvrir le site Web que nous avons commencé, puis :</p>
-        <ul>
+        <ol>
           <li>Compléter les liens hypertextes qui permettent de se déplacer d'une page à l'autre.
             <p>
             <figure>
-              <img src="images/links_list.png" alt="Les liens">
+              <img src="images/links_list.png" alt="Les liens" class="h2cm">
               <figcaption>Les liens</figcaption>
             </figure>
             </p>
@@ -350,44 +354,139 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
             "computerXX_thumb.jpg", pour afficher une version plus grande de ces images dans une nouvelle page.
             <p>
             <figure>
-              <img src="images/resize-computer01.png" alt="Agrandir les images">
+              <img src="images/resize-computer01.png" alt="Agrandir les images" class="h5cm">
               <figcaption>Agrandir les images</figcaption>
             </figure>
             </p>
           </li>
           <li>Refaire le même travail dans la page <strong>parts.html</strong> avec les composants de l'ordinateur.</li>
-        </ul>
+        </ol>
+
+        <h4 class="p-break">Solution</h4>
+        <ol>
+          <li>Les liens suivants sont ajoutés dans toutes les pages.
+            <div class="d-print-none">
+              <figure>
+                <img src="images/links01.png" alt="Les liens entre les pages" class="h3cm">
+                <figcaption>Les liens entre les pages</figcaption>
+              </figure>
+            </div>
+            <div class="d-none d-print-block">
+              <pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;What is it?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;uses.html&quot;&gt;What is used for?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;types.html&quot;&gt;What types?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;parts.html&quot;&gt;What is composed of?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+          </li>
+          <li>Les liens suivants sont ajoutés dans la page <b>index.html</b>, pour agrandir les images
+            <div class="d-print-none">
+              <figure>
+                <img src="images/links02.png" alt="Agrandir les images des ordinateurs" class="h5cm">
+                <figcaption>Agrandir les images des ordinateurs</figcaption>
+              </figure>
+            </div>
+            <div class="d-none d-print-block">
+              <pre><code class="language-html">&lt;p&gt;
+  &lt;a href=&quot;images/computer01.jpg&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;images/computer01_thumb.jpg&quot; alt=&quot;NeXT box&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;images/computer02.jpg&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;images/computer02_thumb.jpg&quot; alt=&quot;Terminal&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;images/computer03.jpg&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;images/computer03_thumb.jpg&quot; alt=&quot;Macintosh&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;images/computer04.jpg&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;images/computer04_thumb.jpg&quot; alt=&quot;Modern Laptop&quot;&gt;
+&lt;/p&gt;</code></pre>
+            </div>
+          </li>
+          <li>De même les liens suivants sont ajoutés dans la page <b>parts.html</b>.
+            <div class="d-print-none">
+              <figure>
+                <img src="images/links03.png" alt="Agrandir les images des composants" class="h5cm">
+                <figcaption>Agrandir les images des composants</figcaption>
+              </figure>
+            </div>
+            <div class="d-none d-print-block">
+              <pre><code class="language-html">&lt;p&gt;
+  &lt;a href=&quot;images/cpu.jpg&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;images/cpu_thumb.jpg&quot; alt=&quot;Processor&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;images/memory.jpg&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;images/memory_thumb.jpg&quot; alt=&quot;Memory&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;images/motherboard.jpg&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;images/motherboard_thumb.jpg&quot; alt=&quot;Motherboard&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;images/storage.jpg&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;images/storage_thumb.jpg&quot; alt=&quot;Storage device&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+            </div>
+          </li>
+        </ol>
       </section>
 
-      <section>
-        <h3>Balises sémantiques + Application 2</h3>
+      <section class="p-break">
+        <h3>Balises sémantiques</h3>
 
-        <h4>Balises sémantiques</h4>
-        <p>Le langage a introduit beaucoup de nouvelles balises sémantiques (structurelles) pour permettre <strong>un
-            découpage plus précis de votre page web en délimitant des zones spécifiques</strong>. La figure suivante
-          présente ces balises d'une façon graphique :</p>
+        <h4>Introduction</h4>
+        <p>Le langage HTML 5 a introduit beaucoup de nouvelles balises sémantiques (structurelles) pour permettre
+          <strong>un découpage plus précis de votre page web en délimitant des zones spécifiques</strong>. La figure
+          suivante présente ces balises d'une façon graphique :
+        </p>
 
         <div>
           <figure>
-            <img src="images/semantic_tags.png" alt="Balises sémantiques">
+            <img src="images/semantic_tags.png" alt="Balises sémantiques" class="h7cm">
             <figcaption>Balises sémantique</figcaption>
           </figure>
         </div>
+      </section>
 
-        <h4>Application 2</h4>
+      <section>
+        <h3>Application 2</h3>
         <p>Nous voulons utiliser ces balises pour mieux structurer notre site web de la façon suivante :</p>
 
         <div>
           <figure>
-            <img src="images/computer_page_structure.png" alt="Structure de notre site Web²">
+            <img src="images/computer_page_structure.png" alt="Structure de notre site Web" class="h5cm">
             <figcaption>Structure de notre site</figcaption>
           </figure>
         </div>
 
         <p>Appliquer cette structure à toutes les pages de votre site.</p>
+
+        <h4 class="p-break">Solution</h4>
+        <p>Ajouter les balises comme le montre la figure suivante, pour toutes les pages :</p>
+        <div class="d-print-none">
+          <figure>
+            <img src="images/semantique01.png" alt="Emplacement des balises sémantiques" class="h10cm">
+            <figcaption>Emplacement des balises sémantiques</figcaption>
+          </figure>
+        </div>
+        <div class="d-none d-print-block">
+          <pre><code class="language-html">&lt;header&gt;
+  &lt;nav&gt;
+    &lt;!-- Entête de page - Menu principal --&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;What is it?&lt;/a&gt;&lt;/li&gt;
+      &lt;!-- ... --&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;!-- Contenu du site --&gt;
+  &lt;h1&gt;Computers&lt;/h1&gt;
+  &lt;h2&gt;What is a computer?&lt;/h2&gt;
+  &lt;!-- ... --&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;!-- Pied de page --&gt;
+  &lt;p&gt;&lt;small&gt;Designed by Mohamed Anis MANI &amp;copy; for the Web course for 2&lt;sup&gt;nd&lt;/sup&gt;TI class&lt;/small&gt;&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+        </div>
       </section>
 
-      <section>
+      <section class="p-break">
         <h3>Feuilles de style (CSS)</h3>
 
         <h4>Introduction</h4>
@@ -403,8 +502,8 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
             <p>Ainsi par exemple, vous utiliserez les CSS pour modifier les polices, la couleur, la taille et
               l'espacement de votre contenu, pour le répartir sur plusieurs colonnes ou bien pour ajouter des animations
               et autres fonctionnalités décoratives.</p>
+            <footer class="blockquote-footer">Source <cite title="Source Title">MDN</cite></footer>
           </blockquote>
-          <footer class="blockquote-footer">Source <cite title="Source Title">MDN</cite></footer>
         </div>
 
         <h4>Premiers pas</h4>
@@ -422,7 +521,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</code></pre>
       </section>
 
-      <section>
+      <section class="p-break">
         <h3>Application 3</h3>
 
         <h4>Liaison entre le fichier HTMl et le fichier CSS</h4>
@@ -452,14 +551,13 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
 
         <div>
           <figure>
-            <img src="images/css_rule.jpg" alt="Règle CSS">
+            <img src="images/css_rule.jpg" alt="Règle CSS" class="h3cm">
             <figcaption>Règle CSS</figcaption>
           </figure>
         </div>
 
         <h4>Les sélecteurs</h4>
-        <p>Au début de cette application, nous avons défini une règle avec pour le sélecteur <code>body</code>. Pour
-          mettre en forme le document il faudra utiliser d'autres sélecteurs.</p>
+        <p>Outre le sélecteur <code>body</code>, nous devons utiliser d'autres sélecteurs.</p>
 
         <ul>
           <li>Définir la mise en forme du sélecteur <code>nav</code>, définir :
@@ -472,8 +570,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
     background-color: #3f51b5;
     margin-bottom: 25px;
     padding: 15px;
-}
-</code></pre>
+  }</code></pre>
           </li>
           <li>Définir la mise en forme de la balise <code>ul</code> qui est à l'intérieur d'une balise <code>nav</code>,
             c'est-à-dire <code>nav ul</code> :
@@ -490,8 +587,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
             <pre><code class="language-css">nav ul {
     text-align: center;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 0; margin: 0;
 }</code></pre>
           </li>
           <li>Mettre toutes les <code>li</code> de la liste précédente sur une même ligne, et définir une marge
@@ -507,63 +603,93 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
     text-decoration: none;
     color: white;
 }
-
 nav ul li a:hover {
   text-decoration: underline;
 }</code></pre>
           </li>
-          <li>Continuer la mise en page de la page pour qu'elle ressemble à peu-près à ce qui suit :
-            <div>
-              <figure>
-                <img src="images/mise_en_page_computers.png" alt="Mise en page finale de la page">
-                <figcaption>Mise en page finale de la page</figcaption>
-              </figure>
-            </div>
-            <p>Les sélecteurs qu'il faudra changer, copier/coller ces règles et essayer de les compléter :</p>
-            <pre><code class="language-css">main {
-    /* marge extérieures droite et gauche : auto */
-    /* largeur 800px*/
-    /* hauteur minimale 100vh */
-    
+        </ul>
+
+        <h4>Travail à faire</h4>
+        <p>Continuer la mise en page de la page pour qu'elle ressemble à peu-près à ce qui suit :</p>
+        <div>
+          <figure>
+            <img src="images/mise_en_page_computers.png" alt="Mise en page finale de la page" class="h7cm">
+            <figcaption>Mise en page finale de la page</figcaption>
+          </figure>
+        </div>
+        <p>Les sélecteurs qu'il faudra changer, copier/coller ces règles et essayer de les compléter :</p>
+        <pre><code class="language-css">main {
+  /* marge extérieures droite et gauche : auto */
+  /* largeur 800px*/
+  /* hauteur minimale 100vh */
+}
+main h1 {
+  /* alignement centré */
+  /* couleur du texte #3f51b5 */
+}
+main h2 {
+  /* couleur du texte #E91E63 */
+}
+main h3 {
+  /* couleur du texte #795548 */
+}
+main strong {
+  /* couleur du texte #f44336*/
+}
+main img {
+  /* bordure noire de 1 pixel */
+}
+footer {
+  /* couleur de remplissage #3f51b5 */
+  /* marge extérieure haut 25 pixels */
+  /* marge intérieure 15 pixels */
+  /* alignement centré */
+  /* couleur de texte blanche */
+}</code></pre>
+
+        <h4 class="p-break">Correction</h4>
+        <div class="d-print-none">
+          <figure>
+            <img src="images/css_computers.png" alt="Correction du code CSS" class="h10cm">
+            <figcaption>Correction du code CSS</figcaption>
+          </figure>
+        </div>
+        <div class="d-none d-print-block">
+          <pre><code class="language-css">main {
+    margin: 0 auto;
+    width: 800px;
+    min-height: 100vh;
 }
 
 main h1 {
-    /* alignement centré */
-    /* couleur du texte #3f51b5 */
-    
+    text-align: center;
+    color: #3f51b5;
 }
 
 main h2 {
-    /* couleur du texte #E91E63 */
-
+    color: #E91E63;
 }
 
 main h3 {
-    /* couleur du texte #795548 */
-
+    color: #795548;
 }
 
 main strong {
-    /* couleur du texte #f44336*/
-
+    color: #f44336;
 }
 
 main img {
-    /* bordure noire de 1 pixel */
-    
+    border: #000 solid 1px;
 }
 
 footer {
-    /* couleur de remplissage #3f51b5 */
-    /* marge extérieure haut 25 pixels */
-    /* marge intérieure 15 pixels */
-    /* alignement centré */
-    /* couleur de texte blanche */
-    
+    background-color: #3f51b5;
+    margin-top: 25px;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
 }</code></pre>
-          </li>
-        </ul>
-
+        </div>
       </section>
     </article>
   </main>
