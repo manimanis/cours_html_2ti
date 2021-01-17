@@ -28,7 +28,7 @@ session_start();
     $students = $stm->fetchAll(PDO::FETCH_ASSOC);
 
     if (isset($_SESSION['message'])) {
-      echo "<p>{$_SESSION['message']}</p>";
+      echo "<p class=\"text-warning\">{$_SESSION['message']}</p>";
       unset($_SESSION['message']);
     }
     ?>

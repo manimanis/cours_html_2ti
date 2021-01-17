@@ -85,9 +85,11 @@ function find_by_question_id($reponses, $question_id)
   <main class="container">
     <h1>Evaluation Web</h1>
     <h2 class="text-center"><?= $student['nom_prenom'] ?></h2>
+    <p>Vous avez répondu à <?= count($reponses) ?> questions il vous reste à répondre à <?= count($questions) - count($reponses) ?> questions.</p>
+
     <form action="repondre.php" method="post">
       <div class="my-2">
-        <ol type="i">
+        <div>
           <?php
           $last_sujet = '';
           $html = '';
@@ -95,28 +97,41 @@ function find_by_question_id($reponses, $question_id)
           foreach ($questions as $question) {
             if ($last_sujet != $question['nom_sujet']) {
               $html .= $closing_sujet;
-              $html .= '<li class="topic">' . $question['nom_sujet'];
-              $html .= '<ol class="my-3">';
-              $closing_sujet = '</ol></li>';
+              $html .= '<div class="topic my-2">' . $question['nom_sujet'];
+              $html .= '<div class="my-3">';
+              $closing_sujet = '</div></div>';
             }
             $rep = find_by_question_id($reponses, $question['question_id']);
-            $html .= '<li class="my-2 question ' . ($rep['nbre_reponses'] == 0 ? "" : "text-success") . '">' . $question['question'] . " (" . $rep['nbre_reponses'] . " answers)" .
-              '<textarea name="question_' . $question['question_id'] . '" class="form-control"></textarea></li>';
+            $html .= '<div class="my-2 question ' . ($rep['nbre_reponses'] == 0 ? "text-danger" : "text-success") . '">' .
+              '<label for="question_' . $question['question_id'] . '">' .
+              $question['question'] . " (" . $rep['nbre_reponses'] . " answers)" .
+              '</label>' .
+              '<textarea id="question_' . $question['question_id'] . '" name="question_' . $question['question_id'] . '" class="form-control"></textarea></div>';
 
             $last_sujet = $question['nom_sujet'];
           }
           $html .= $closing_sujet;
           echo $html;
           ?>
-        </ol>
-        <input type="hidden" name="id_eleve" value="<?= $id_eleve ?>">
-      </div>
-      <div class="my-2">
-        <button class="btn btn-primary">Envoyer</button>
-      </div>
+          </ol>
+          <input type="hidden" name="id_eleve" value="<?= $id_eleve ?>">
+        </div>
+        <div id="question-navigation">
+          <nav aria-label="...">
+            <ul class="pagination pagination-sm justify-content-center">
+
+            </ul>
+          </nav>
+        </div>
+        <div class="my-2">
+          <button class="btn btn-primary">Envoyer</button>
+        </div>
     </form>
 
   </main>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/navigation.js"></script>
 </body>
 
 </html>
