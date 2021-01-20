@@ -226,6 +226,26 @@ function fetch_login_byipaddr($pdo, $ip_addr, $date) {
   $stm->execute([$date, $ip_addr]);
   return $stm->fetch(PDO::FETCH_ASSOC);  
 }
+
+function update_logins_granted($pdo, $ids, $granted = 1) {
+  $sids = implode(', ', $ids);
+  $query = "UPDATE logins
+  SET granted = ?
+  WHERE id IN ($sids)";
+  $stm = $pdo->prepare($query);
+  return $stm->execute([$granted]);
+}
+
+function fetch_logins_byids($pdo, $ids)
+{
+  $sids = implode(', ', $ids);
+  $query = "SELECT l.id AS login_id, l.user_id, u.nom_prenom, l.date_login, l.date_expire, l.ip_addr, l.granted 
+  FROM logins AS l
+    INNER JOIN users AS u ON l.user_id = u.id
+  WHERE l.id IN ($sids)";
+  $stm = $pdo->query($query);
+  return $stm->fetchAll(PDO::FETCH_ASSOC);
+}
 //--------------------------------------------------------
 function fetch_student_questions($pdo, $user_id) {
   $query = "SELECT q.id, s.nom_sujet, q.question, r.id AS rep_id, r.reponse, r.note, r.est_corrige, r.date_correction
@@ -291,3 +311,4 @@ function update_student_answer($pdo, $reponse) {
     $reponse['id']
   ]);
 }
+

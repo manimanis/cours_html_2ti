@@ -74,6 +74,10 @@ if ($op == 'dates') {
   }
 } else if ($op == 'login_list') {
   $data['data']['logins'] = fetch_logins($pdo);
+} else if ($op == 'grant') {
+  $granted = intval($_GET['granted']);
+  update_logins_granted($pdo, $json, $granted);
+  $data['data']['logins'] = fetch_logins_byids($pdo, $json);
 }
 
 echo json_encode($data);

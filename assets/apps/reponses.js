@@ -232,7 +232,26 @@ const app = new Vue({
         .then(questions => {
           this.questions = questions;
           this.moveToQuestion(0);
+          this.watchActiveLogin();
         });
+    },
+    watchActiveLogin: function () {
+      if (this.mode == 'questions_view') {
+        setTimeout(() => {
+          this
+            .fetchLogin(this.login_data.id)
+            .then(login => {
+              if (login == null) {
+                this.showLoginPage();
+              } else if (!login.granted) {
+                this.login_data = login;
+                this.showWaitingPage();
+              } else {
+                this.watchActiveLogin();
+              }
+            });
+        }, 3000);
+      }
     },
     moveToQuestion: function (num_question) {
       if (num_question >= 0 && num_question < this.questions.length) {

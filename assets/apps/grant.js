@@ -6,9 +6,10 @@ class Login {
     this.date_login = obj.date_login || "";
     this.date_expire = obj.date_expire || "";
     this.ip_addr = obj.ip_addr || "";
-    this.granted = !!obj.granted;
+    this.granted = !!+obj.granted;
   }
 }
+
 const app = new Vue({
   el: '#app',
   data: {
@@ -18,11 +19,7 @@ const app = new Vue({
     selectedItems: []
   },
   mounted: function () {
-    this.fetchLogins()
-      .then(logins => {
-        this.logins = Array(logins.length * 10).fill(0).map((v, i) => logins[i % logins.length]);
-        this.selectAll(false);
-      });
+    this.loadLogins();
   },
   computed: {
     selectedItemsCount: function () {
@@ -62,8 +59,55 @@ const app = new Vue({
           return null;
         });
     },
+    grantAccess: function (logins, granted) {
+      return fetch(`manage.php?op=grant&granted=${granted}`, {
+        method: "post",
+        body: JSON.stringify(logins)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (!this.handleDataErrors(data)) {
+            return data.data.logins.map(l => new Login(l));
+          }
+          return null;
+        });
+    },
     selectAll: function (selected) {
       this.selectedItems = this.logins.map((l, i) => selected);
+    },
+    loadLogins: function () {
+      this.fetchLogins()
+        .then(logins => {
+          if (this.logins == null) {
+            this.logins = logins;
+            this.selectAll(false);
+          } else {
+            const selectedLogins = this.logins
+              .filter((l, i) => this.selectedItems[i])
+              .map(l => l.login_id);
+            const newSelectedItems = logins.map(l => selectedLogins.includes(l.login_id));
+            this.logins = logins;
+            this.selectedItems = newSelectedItems;
+          }
+          this.refreshLogin();
+        });
+    },
+    updateGranted: function (logins, granted) {
+      this.grantAccess(logins, granted)
+        .then(newLogins => {
+          if (newLogins != null) {
+            newLogins.forEach(l1 => {
+              const l1Idx = this.logins.findIndex(l => l.login_id === l1.login_id);
+              this.logins[l1Idx] = l1;
+              this.$forceUpdate();
+            });
+          }
+        });
+    },
+    refreshLogin: function () {
+      if (this.mode == 'grant') {
+        setTimeout(() => this.loadLogins(), 5000);
+      }
     },
     selectItem: function (index, selected) {
       // this.selectedItems[index] = selected;
@@ -74,8 +118,14 @@ const app = new Vue({
     onSelectItemClicked: function (index) {
       // this.selectItem(index, this.selectedItems[index]);
     },
-    onGrantAccessClicked: function () {},
-    onRevokeAccessClicked: function () {},
-    onRemoveAccessClicked: function () {}
+    onGrantAccessClicked: function (granted) {
+      const selectedLogins = this.logins
+        .filter((l, i) => this.selectedItems[i] && l.granted != granted)
+        .map(l => l.login_id);
+      if (selectedLogins.length > 0) {
+        this.updateGranted(selectedLogins, granted);
+      }
+    },
+    onRemoveAccessClicked: function () { }
   }
 });
