@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grant Access</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div v-if="mode == 'grant' && logins != null">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" v-model="selectedAllRadio">
+            </th>
+            <th>id</th>
+            <th>Name</th>
+            <th>Login date</th>
+            <th>Expire Date</th>
+            <th>IP Address</th>
+            <th>Granted</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(login, index) in logins">
+            <td>
+              <input type="checkbox" v-model="selectedItems[index]">
+            </td>
+            <td>{{login.login_id}}</td>
+            <td>{{login.nom_prenom}}</td>
+            <td>{{login.date_login}}</td>
+            <td>{{login.date_expire}}</td>
+            <td>{{login.ip_addr}}</td>
+            <td>{{login.granted}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="my-2">
+        <button class="btn btn-success" v-bind:class="{disabled: selectedItemsCount == 0}" v-on:click.prevent="onGrantAccessClicked()">Grant</button>
+        <button class="btn btn-warning" v-bind:class="{disabled: selectedItemsCount == 0}" v-on:click.prevent="onRevokeAccessClicked()">Revoke</button>
+        <button class="btn btn-danger" v-bind:class="{disabled: selectedItemsCount == 0}" v-on:click.prevent="onRemoveAccessClicked()">Remove</button>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/vue.min.js"></script>
+  <script src="assets/apps/grant.js"></script>
+</body>
+
+</html>

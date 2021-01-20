@@ -19,6 +19,19 @@ h4 {
   color: #33a8e3;
 }
 
+.loading-spinner {
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 60%);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.loading-spinner .spinner-border {
+  position: absolute;
+  top: calc(50% - 24px);
+}
+
 figure {
   counter-increment: figures;
   text-align: center;

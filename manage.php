@@ -72,6 +72,8 @@ if ($op == 'dates') {
       $data['data']['question'] = fetch_question_byid($pdo, $json['id']);
     }
   }
+} else if ($op == 'login_list') {
+  $data['data']['logins'] = fetch_logins($pdo);
 }
 
 echo json_encode($data);

@@ -12,6 +12,7 @@ class Question {
 const app = new Vue({
   el: '#app',
   data: {
+    loading: 0,
     error: false,
     errorMessage: '',
     questions: [],
@@ -39,25 +40,45 @@ const app = new Vue({
       return this.error;
     },
     /**
+     * 
+     */
+    startLoading: function () {
+      this.loading++;
+    },
+    endLoading: function () {
+      setTimeout(() => {
+        if (this.loading > 0) {
+          this.loading--;
+        }
+      }, 0);
+    },
+    /**
      * Fetch all questions
      */
     fetchQuestions: function () {
+      this.startLoading();
       return fetch('manage.php?op=questions')
         .then(response => response.json())
         .then(data => {
+          this.endLoading();
           if (!this.handleDataErrors(data)) {
             this.questions = data.data.questions.map(q => new Question(q));
             this.moveToPage(0);
           }
+        })
+        .catch(err => {
+          this.endLoading();
         });
     },
     saveQuestion: function (question) {
+      this.startLoading();
       return fetch("manage.php?op=save_question", {
         method: "post",
         body: JSON.stringify(question)
       })
         .then(response => response.json())
         .then(data => {
+          this.endLoading();
           if (!this.handleDataErrors(data)) {
             const savedQuestion = new Question(data.data.question);
             // update nom_sujet field
@@ -66,6 +87,9 @@ const app = new Vue({
               .forEach(q => { q.nom_sujet = savedQuestion.nom_sujet; })
             this.questions[this.curr_page] = savedQuestion;
           }
+        })
+        .catch(err => {
+          this.endLoading();
         });
     },
     /**

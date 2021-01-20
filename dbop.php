@@ -5,6 +5,7 @@ $user = "root";
 $passwd = "mysqlroot";
 
 $pdo = new PDO($dsn, $user, $passwd);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 function fetch_dates_reponses($pdo)
 {
@@ -137,5 +138,156 @@ function save_sujet($pdo, $sujet)
   return $stm->execute([
     $sujet['nom_sujet'],
     $sujet['sujet_id']
+  ]);
+}
+
+//----------------------------------------------------
+function fetch_users($pdo)
+{
+  $query = "SELECT id, nom_prenom FROM users";
+  $stm = $pdo->query($query);
+  return $stm->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function fetch_user_byid($pdo, $id)
+{
+  $query = "SELECT id, nom_prenom
+  FROM users
+  WHERE id = ?";
+  $stm = $pdo->prepare($query);
+  $stm->execute([$id]);
+  return $stm->fetch(PDO::FETCH_ASSOC);
+}
+
+//----------------------------------------------------
+function fetch_logins($pdo) {
+  $query = "SELECT l.id AS login_id, l.user_id, u.nom_prenom, l.date_login, l.date_expire, l.ip_addr, l.granted 
+  FROM logins AS l
+    INNER JOIN users AS u ON l.user_id = u.id";
+  $stm = $pdo->query($query);
+  return $stm->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function insert_login($pdo, $login)
+{
+  $query = "INSERT INTO logins (`user_id`, date_login, date_expire,	ip_addr, granted) 
+  VALUES (?, ?, ?, ?, ?)";
+  try {
+    $stm = $pdo->prepare($query);
+    $res = $stm->execute([
+      $login['user_id'],
+      $login['date_login'],
+      $login['date_expire'],
+      $login['ip_addr'],
+      $login['granted']
+    ]);
+  } catch (Exception $e) {
+    var_dump($e);
+  }
+  return $res;
+}
+
+function delete_obsolete_logins($pdo, $ip_addr, $login_id) {
+  $query = "DELETE FROM logins WHERE ip_addr = ? AND id != ?";
+  $stm = $pdo->prepare($query);
+  $res = $stm->execute([$ip_addr, $login_id]);
+  return $res;
+}
+
+function delete_login($pdo, $login_id)
+{
+  $query = "DELETE FROM logins WHERE id = ?";
+  $stm = $pdo->prepare($query);
+  $res = $stm->execute([$login_id]);
+  return $res;
+}
+
+function fetch_login_byid($pdo, $id)
+{
+  $query = "SELECT *
+  FROM logins
+  WHERE id = ?";
+  $stm = $pdo->prepare($query);
+  $stm->execute([$id]);
+  return $stm->fetch(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Return last login from one IP Address
+ */
+function fetch_login_byipaddr($pdo, $ip_addr, $date) {
+  $query = "SELECT *
+  FROM logins AS l1
+  WHERE 
+    ? BETWEEN date_login AND date_expire AND
+    ip_addr = ? AND
+    date_login = (SELECT MAX(date_login) FROM logins AS l2 WHERE l2.ip_addr = l1.ip_addr)";
+  $stm = $pdo->prepare($query);
+  $stm->execute([$date, $ip_addr]);
+  return $stm->fetch(PDO::FETCH_ASSOC);  
+}
+//--------------------------------------------------------
+function fetch_student_questions($pdo, $user_id) {
+  $query = "SELECT q.id, s.nom_sujet, q.question, r.id AS rep_id, r.reponse, r.note, r.est_corrige, r.date_correction
+  FROM questions AS q
+    INNER JOIN sujets AS s ON q.sujet_id = s.id
+    INNER JOIN questions_users AS qu ON q.id = qu.question_id
+    LEFT JOIN reponses AS r ON r.question_id = qu.question_id AND r.user_id = qu.user_id
+  WHERE qu.user_id = ?";
+  $stm = $pdo->prepare($query);
+  $stm->execute([$user_id]);
+  return $stm->fetchAll(PDO::FETCH_ASSOC); 
+}
+
+function fetch_student_answer_byid($pdo, $id) {
+  $query = "SELECT * FROM reponses WHERE id = ?";
+  $stm = $pdo->prepare($query);
+  $stm->execute([$id]);
+  return $stm->fetch(PDO::FETCH_ASSOC);
+}
+
+function fetch_student_answer_byquestionid($pdo, $user_id, $question_id) {
+  $query = "SELECT * FROM reponses WHERE question_id = ? and `user_id` = ?";
+  $stm = $pdo->prepare($query);
+  $stm->execute([$question_id, $user_id]);
+  return $stm->fetch(PDO::FETCH_ASSOC);
+}
+
+function insert_student_answer($pdo, $reponse) {
+  $query = "INSERT INTO reponses (`user_id`, question_id, reponse, note, date_rep, est_corrige,	date_correction, ip_addr) 
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+  $stm = $pdo->prepare($query);
+  $stm->execute([
+    $reponse['user_id'],
+    $reponse['question_id'],
+    $reponse['reponse'],
+    $reponse['note'],
+    $reponse['date_rep'],
+    $reponse['est_corrige'],
+    $reponse['date_correction'],
+    $reponse['ip_addr']
+  ]);
+  return $pdo->lastInsertId();
+}
+
+function update_student_answer($pdo, $reponse) {
+  $query = "UPDATE reponses 
+  SET 
+    reponse = ?, 
+    note = ?, 
+    date_rep = ?, 
+    est_corrige = ?,	
+    date_correction = ?, 
+    ip_addr = ? 
+  WHERE id = ?";
+  $stm = $pdo->prepare($query);
+  return $stm->execute([
+    $reponse['reponse'],
+    $reponse['note'],
+    $reponse['date_rep'],
+    $reponse['est_corrige'],
+    $reponse['date_correction'],
+    $reponse['ip_addr'],
+    $reponse['id']
   ]);
 }

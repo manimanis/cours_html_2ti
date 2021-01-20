@@ -4,128 +4,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Réponses</title>
+  <title>Answers</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <style>
-    .answer h3 {
-      color: rgb(73, 129, 0) !important;
-    }
-    .answer h4 {
-      color: #fd7e14;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/login.css">
 </head>
 
 <body>
-  <main id="application" class="container">
-    <div v-if="error">
-      <p class="text-danger">{{errorMessage}}</p>
+  <main class="container my-3" id="app">
+    <div v-if="loading > 0" class="loading-spinner">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
     </div>
 
-    <div v-if="current_item >= 0 && current_item < total">
+    <section class="login-form" v-if="mode == 'login'">
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Login Form -->
+          <form>
+            <select name="login" id="login" class="fadeIn second" v-model="user_id">
+              <option value="-1">Select your name</option>
+              <option v-for="user in users" v-bind:value="user.id">{{user.nom_prenom}}</option>
+            </select>
+            <input type="submit" class="fadeIn third" value="Log In" v-bind:disabled="user_id == -1"
+              v-on:click.prevent="onLoginClicked()">
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section v-if="mode == 'waiting'">
       <div class="text-center">
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <button type="button" class="btn btn-outline-primary" v-on:click="onPreviousClicked()"
-            v-bind:disabled="current_item == 0">&lt;</button>
-          <button type="button" class="btn btn-outline-primary" disabled>{{current_item + 1}} / {{total}}</button>
-          <button type="button" class="btn btn-outline-primary" v-on:click="onNextClicked()"
-            v-bind:disabled="current_item == total - 1">&gt;</button>
-        </div>
+        <p>You're welcome</p>
+        <h3>{{sel_user.nom_prenom}}</h3>
+        <p>Your login request is sent and is waiting to be granted access. Please wait.</p>
+        <p>Don't worry you will be logged in automatically when granted.</p>
+        <p>Your login id is</p>
+        <p class="fs-1"><b>{{login_data.id}}</b></p>
       </div>
-
-      <div class="row my-3">
-        <div class="col-sm-6 col-lg-3">
-          <div class="text-center"><b>Student</b></div>
-          <div class="text-center">{{answers[current_item].nom_prenom}}</div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="text-center"><b>Class</b></div>
-          <div class="text-center">{{answers[current_item].classe}}</div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="text-center"><b>Date</b></div>
-          <div class="text-center">{{formatTime(answers[current_item].date_rep)}}</div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="text-center"><b>IP Address</b></div>
-          <div class="text-center">{{answers[current_item].ip_addr}}</div>
-        </div>
+      <div class="text-center my-2">
+        <button class="btn btn-secondary" v-on:click.prevent="onLogoutClicked()">Logout</button>
       </div>
-      <div class="answer">
-        <h3 class="text-center">{{answers[current_item].nom_sujet}}</h3>
-        <h4 class="text-center">{{answers[current_item].question}}</h4>
-        <p class="p-3 border">{{answers[current_item].reponse}}</p>
+    </section>
+
+    <section v-if="mode == 'questions_view'">
+      <div class="text-center my-2">
+        <button class="btn btn-secondary" v-on:click.prevent="onLogoutClicked()">Logout</button>
       </div>
-
-    </div>
-
-    <div v-if="answers.items">
-      <div class="p-2 my-3" v-for="(sujet, sidx) in answers.items">
-        <h2>{{sidx+1}}. {{sujet.nom_sujet}}</h2>
-        <div class="p-2 my-3" v-for="(question, qidx) in sujet.questions">
-          <h3>{{sidx+1}}.{{qidx+1}}. {{question.question}}</h3>
-          <div class="accordion" v-bind:id="'acc_ans' + sidx + '_' + qidx">
-            <div class="accordion-item" v-for="(user, uidx) in question.users">
-              <h4 class="accordion-header" v-bind:id="'acc_head' + sidx + '_' + qidx + '_' + uidx">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  v-bind:data-bs-target="'#acc_coll' + sidx + '_' + qidx + '_'  + uidx" aria-expanded="false"
-                  v-bind:aria-controls="'acc_coll' + sidx + '_' + qidx + '_'  + uidx">
-                  {{user.nom_prenom}}
-                </button>
-              </h4>
-              <div v-bind:id="'acc_coll' + sidx + '_' + qidx + '_'  + uidx" class="accordion-collapse collapse"
-                v-bind:aria-labelledby="'acc_head' + sidx + '_' + qidx + '_'  + uidx"
-                v-bind:data-bs-parent="'#acc_ans' + sidx + '_' + qidx">
-
-                <div class="accordion-body">
-                  <div class="border p-2 my-2" v-for="(answer, aidx) in user.answers">
-                    <h5>Answer {{aidx + 1}}/{{user.answers.length}}</h5>
-                    <div class="row">
-                      <div class="col-sm-6 small">
-                        <b>IP Address:</b> {{answer.ip_addr}}
-                      </div>
-                      <div class="col-sm-6 small">
-                        <b>Answer Date:</b> {{formatTime(answer.date_rep)}}
-                      </div>
-                      <div class="col-sm-12">
-                        <p class="small"><b>Answer</b></p>
-                        <div>{{answer.reponse}}</div>
-                        <div v-if="edit_answer === answer.id">
-                          <textarea class="form-control" v-model="reponse_copy"></textarea>
-                        </div>
-                      </div>
-                      <div>
-                        <label v-bind:for="'note_' + answer.id">Note</label>
-                        <input class="form-control" type="number" name="note" min="0.0" max="1.0" step="0.25"
-                          v-bind:id="'note_' + answer.id" v-model="answer.note"
-                          v-on:change="onNoteChanged(sidx, qidx, uidx, aidx)">
-                      </div>
-                      <div class="my-2">
-                        <button v-if="edit_answer === -1" class="btn btn-secondary"
-                          v-on:click.prevent="onEditAnswerClicked(sidx, qidx, uidx, aidx)">Edit answer</button>
-                        <button v-if="edit_answer === answer.id" class="btn btn-success"
-                          v-on:click.prevent="onApplyEditAnswerClicked(sidx, qidx, uidx, aidx)">Apply</button>
-                        <button v-if="edit_answer === answer.id" class="btn btn-dark"
-                          v-on:click.prevent="onCancelEditAnswerClicked(sidx, qidx, uidx, aidx)">Cancel</button>
-                        <button v-if="edit_answer === -1" class="btn btn-danger"
-                          v-on:click.prevent="onDeleteAnswerClicked(sidx, qidx, uidx, aidx)">Delete answer</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+      <div v-if="questions != null && questions.length > 0">
+        <div>
+          <div>{{curr_question + 1}} / {{questions.length}}</div>
+          <div v-if="questions[curr_question].est_corrige">
+            <p>Question has been reviewed: {{questions[curr_question].date_correction}}</p>
+            <p>Your mark: {{questions[curr_question].note}}</p>
           </div>
+          <div v-if="!questions[curr_question].est_corrige">
+            Question not reviewed yet
+          </div>
+          <h2>{{questions[curr_question].nom_sujet}}</h2>
+          <h3>{{questions[curr_question].question}}</h3>
+          <textarea v-if="!questions[curr_question].est_corrige" class="form-control" rows="5"
+            v-model="questions[curr_question].reponse" v-on:change="onReponseChanged(curr_question)"></textarea>
+          <div v-if="answer_saved" class="my-2 small text-success">Answer saved successfully!</div>
         </div>
-      </div>
-    </div>
 
+        <div id="question-navigation" class="my-2">
+          <nav aria-label="...">
+            <ul class="pagination pagination-sm justify-content-center">
+              <li class="page-item" v-bind:class="{disabled: curr_question - 5 < 0}">
+                <a class="page-link" href="#" v-bind:aria-disabled="curr_question - 5 < 0"
+                  v-on:click.prevent="onNavigationClicked(curr_question-5)">-5</a>
+              </li>
+              <li class="page-item" v-bind:class="{disabled: curr_question == 0}">
+                <a class="page-link" href="#" v-bind:aria-disabled="curr_question == 0"
+                  v-on:click.prevent="onNavigationClicked(curr_question-1)">&lt;</a>
+              </li>
+              <li v-for="num_page in nav_pages" class="page-item" v-bind:class="{'active': num_page === curr_question}">
+                <a class="page-link" href="#" v-on:click.prevent="onNavigationClicked(num_page)">{{num_page + 1}}</a>
+              </li>
+              <li class="page-item" v-bind:class="{disabled: curr_question == questions.length - 1}">
+                <a class="page-link" href="#" v-bind:aria-disabled="curr_question == questions.length - 1"
+                  v-on:click.prevent="onNavigationClicked(curr_question+1)">&gt;</a>
+              </li>
+              <li class="page-item" v-bind:class="{disabled: curr_question + 5 >= questions.length}">
+                <a class="page-link" href="#" v-bind:aria-disabled="curr_question + 5 >= questions.length"
+                  v-on:click.prevent="onNavigationClicked(curr_question+5)">+5</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+
+      </div>
+    </section>
   </main>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/vue.min.js"></script>
-  <script src="assets/js/reponses.js"></script>
+  <script src="assets/apps/reponses.js"></script>
 </body>
 
 </html>
