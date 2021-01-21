@@ -43,7 +43,8 @@ const app = new Vue({
     questions: null,
     curr_question: -1,
     nav_pages: [],
-    answer_saved: false
+    answer_saved: false,
+    noms_sujets: []
   },
   mounted: function () {
     this.fetchActiveLogin()
@@ -231,6 +232,16 @@ const app = new Vue({
       this.fetchQuestions()
         .then(questions => {
           this.questions = questions;
+          this.noms_sujets = this.questions.map(q => q.nom_sujet);
+          this.noms_sujets = this.noms_sujets
+            .filter((ns, i) => this.noms_sujets.indexOf(ns) === i)
+            .map(ns => {
+              return {
+                nom_sujet: ns,
+                first_page: this.questions.findIndex(q => q.nom_sujet === ns),
+                questions_count: this.questions.reduce((pv, cq) => pv + +(cq.nom_sujet === ns), 0)
+              };
+            });
           this.moveToQuestion(0);
           this.watchActiveLogin();
         });
@@ -238,18 +249,22 @@ const app = new Vue({
     watchActiveLogin: function () {
       if (this.mode == 'questions_view') {
         setTimeout(() => {
-          this
-            .fetchLogin(this.login_data.id)
-            .then(login => {
-              if (login == null) {
-                this.showLoginPage();
-              } else if (!login.granted) {
-                this.login_data = login;
-                this.showWaitingPage();
-              } else {
-                this.watchActiveLogin();
-              }
-            });
+          if (this.login_data) {
+            this
+              .fetchLogin(this.login_data.id)
+              .then(login => {
+                if (login == null) {
+                  this.showLoginPage();
+                } else if (!login.granted) {
+                  this.login_data = login;
+                  this.showWaitingPage();
+                } else {
+                  this.watchActiveLogin();
+                }
+              });
+          } else {
+            this.showLoginPage();
+          }
         }, 3000);
       }
     },
@@ -304,6 +319,9 @@ const app = new Vue({
           this.answer_saved = true;
           setTimeout(() => { this.answer_saved = false; }, 3000);
         });
+    },
+    onMoveToSubjectClicked: function (first_page) {
+      this.moveToQuestion(first_page);
     }
   }
 });

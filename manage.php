@@ -78,6 +78,8 @@ if ($op == 'dates') {
   $granted = intval($_GET['granted']);
   update_logins_granted($pdo, $json, $granted);
   $data['data']['logins'] = fetch_logins_byids($pdo, $json);
+} else if ($op == 'delete_logins') {
+  $data['data']['logins'] = delete_logins($pdo, $json);
 }
 
 echo json_encode($data);

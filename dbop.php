@@ -246,6 +246,16 @@ function fetch_logins_byids($pdo, $ids)
   $stm = $pdo->query($query);
   return $stm->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function delete_logins($pdo, $logins_ids) {
+  $deleted = [];
+  foreach ($logins_ids as $login_id) {
+    if (delete_login($pdo, $login_id)) {
+      $deleted[] = $login_id;
+    }
+  }
+  return $deleted;
+}
 //--------------------------------------------------------
 function fetch_student_questions($pdo, $user_id) {
   $query = "SELECT q.id, s.nom_sujet, q.question, r.id AS rep_id, r.reponse, r.note, r.est_corrige, r.date_correction

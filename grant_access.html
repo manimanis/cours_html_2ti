@@ -38,7 +38,7 @@
             <td>{{login.ip_addr}}</td>
             <td>
               <label class="switch">
-                <input type="checkbox" v-model="login.granted" disabled>
+                <input type="checkbox" v-bind:checked="login.granted" v-on:click.prevent="onGrantAccessToggle(index)">
                 <span class="slider round"></span>
               </label>
             </td>

@@ -72,6 +72,19 @@ const app = new Vue({
           return null;
         });
     },
+    deleteLogins: function (logins) {
+      return fetch(`manage.php?op=delete_logins`, {
+        method: "post",
+        body: JSON.stringify(logins)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (!this.handleDataErrors(data)) {
+            return data.data.logins.map(id => +id);
+          }
+          return null;
+        });
+    },
     selectAll: function (selected) {
       this.selectedItems = this.logins.map((l, i) => selected);
     },
@@ -104,6 +117,18 @@ const app = new Vue({
           }
         });
     },
+    deleteUsersLogins: function (logins) {
+      this.deleteLogins(logins)
+        .then(delLogins => {
+          if (delLogins != null) {
+            delLogins.forEach(lid => {
+              const l1Idx = this.logins.findIndex(l => l.login_id === lid);
+              this.logins.splice(l1Idx, 1);
+              this.$forceUpdate();
+            });
+          }
+        });
+    },
     refreshLogin: function () {
       if (this.mode == 'grant') {
         setTimeout(() => this.loadLogins(), 5000);
@@ -126,6 +151,16 @@ const app = new Vue({
         this.updateGranted(selectedLogins, granted);
       }
     },
-    onRemoveAccessClicked: function () { }
+    onRemoveAccessClicked: function () {
+      const selectedLogins = this.logins
+        .filter((l, i) => this.selectedItems[i])
+        .map(l => l.login_id);
+      if (selectedLogins.length > 0) {
+        this.deleteUsersLogins(selectedLogins);
+      }
+    },
+    onGrantAccessToggle: function (index) {
+      this.updateGranted([this.logins[index].login_id], +!this.logins[index].granted);
+    }
   }
 });
