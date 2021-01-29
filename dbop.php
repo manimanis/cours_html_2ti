@@ -9,14 +9,12 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 function fetch_dates_reponses($pdo)
 {
-  $query = "SELECT DISTINCT DATE(date_rep) AS date_rep FROM `reponses` ORDER BY date_rep DESC";
+  $query = "SELECT COUNT(id) AS nb_reponses, SUM(est_corrige) AS nb_corriges, DATE(date_rep) AS date_rep
+  FROM reponses 
+  GROUP BY 3
+  ORDER BY 3 DESC";
   $stm = $pdo->query($query);
-  $res = $stm->fetchAll(PDO::FETCH_ASSOC);
-  $dates = [];
-  foreach ($res as $row) {
-    $dates[] = $row['date_rep'];
-  }
-  return $dates;
+  return $stm->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function fetch_reponse_byid($pdo, $rep_id)
@@ -43,6 +41,26 @@ WHERE est_corrige = ?";
   $stm = $pdo->prepare($query);
   $stm->execute([$est_corrige]);
   return $stm->fetch(PDO::FETCH_ASSOC)['nbre_reponses'];
+}
+
+function fetch_reponses_bydate($pdo, $start_date, $end_date = null)
+{
+  if ($end_date == null) {
+    $end_date = $start_date;
+  }
+  $query = "SELECT r.*, 
+  u.nom_prenom, u.classe, u.date_inscrit, 
+  q.sujet_id, q.question, q.num_question, q.reponse_modele,
+  s.nom_sujet
+FROM `reponses` AS r
+  INNER JOIN users as u ON r.user_id = u.id
+  INNER JOIN questions AS q ON r.question_id = q.id
+  INNER JOIN sujets AS s ON q.sujet_id = s.id
+WHERE DATE(r.date_rep) >= ? AND DATE(r.date_rep) <= ?
+ORDER BY r.question_id, r.user_id, r.date_rep DESC";
+  $stm = $pdo->prepare($query);
+  $stm->execute([$start_date, $end_date]);
+  return $stm->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function fetch_reponses_bypage($pdo, $est_corrige, $page = 0, $page_size = 20)
@@ -76,10 +94,17 @@ function update_reponse($pdo, $reponse)
   $query = "UPDATE reponses 
 SET 
   reponse = ?,
-  note = ? 
+  note = ?,
+  est_corrige = ?,
+  date_correction = ? 
 WHERE id = ?";
   $stm = $pdo->prepare($query);
-  return $stm->execute([$reponse['reponse'], $reponse['note'], $reponse['id']]);
+  return $stm->execute([
+    $reponse['reponse'], 
+    $reponse['note'], 
+    $reponse['est_corrige'], 
+    $reponse['date_correction'],
+    $reponse['id']]);
 }
 
 function delete_reponse($pdo, $rep_id)
@@ -160,7 +185,8 @@ function fetch_user_byid($pdo, $id)
 }
 
 //----------------------------------------------------
-function fetch_logins($pdo) {
+function fetch_logins($pdo)
+{
   $query = "SELECT l.id AS login_id, l.user_id, u.nom_prenom, l.date_login, l.date_expire, l.ip_addr, l.granted 
   FROM logins AS l
     INNER JOIN users AS u ON l.user_id = u.id";
@@ -187,7 +213,8 @@ function insert_login($pdo, $login)
   return $res;
 }
 
-function delete_obsolete_logins($pdo, $ip_addr, $login_id) {
+function delete_obsolete_logins($pdo, $ip_addr, $login_id)
+{
   $query = "DELETE FROM logins WHERE ip_addr = ? AND id != ?";
   $stm = $pdo->prepare($query);
   $res = $stm->execute([$ip_addr, $login_id]);
@@ -215,7 +242,8 @@ function fetch_login_byid($pdo, $id)
 /**
  * Return last login from one IP Address
  */
-function fetch_login_byipaddr($pdo, $ip_addr, $date) {
+function fetch_login_byipaddr($pdo, $ip_addr, $date)
+{
   $query = "SELECT *
   FROM logins AS l1
   WHERE 
@@ -224,10 +252,11 @@ function fetch_login_byipaddr($pdo, $ip_addr, $date) {
     date_login = (SELECT MAX(date_login) FROM logins AS l2 WHERE l2.ip_addr = l1.ip_addr)";
   $stm = $pdo->prepare($query);
   $stm->execute([$date, $ip_addr]);
-  return $stm->fetch(PDO::FETCH_ASSOC);  
+  return $stm->fetch(PDO::FETCH_ASSOC);
 }
 
-function update_logins_granted($pdo, $ids, $granted = 1) {
+function update_logins_granted($pdo, $ids, $granted = 1)
+{
   $sids = implode(', ', $ids);
   $query = "UPDATE logins
   SET granted = ?
@@ -247,7 +276,8 @@ function fetch_logins_byids($pdo, $ids)
   return $stm->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function delete_logins($pdo, $logins_ids) {
+function delete_logins($pdo, $logins_ids)
+{
   $deleted = [];
   foreach ($logins_ids as $login_id) {
     if (delete_login($pdo, $login_id)) {
@@ -257,7 +287,8 @@ function delete_logins($pdo, $logins_ids) {
   return $deleted;
 }
 //--------------------------------------------------------
-function fetch_student_questions($pdo, $user_id) {
+function fetch_student_questions($pdo, $user_id)
+{
   $query = "SELECT q.id, s.nom_sujet, q.question, r.id AS rep_id, r.reponse, r.note, r.est_corrige, r.date_correction
   FROM questions AS q
     INNER JOIN sujets AS s ON q.sujet_id = s.id
@@ -266,24 +297,27 @@ function fetch_student_questions($pdo, $user_id) {
   WHERE qu.user_id = ?";
   $stm = $pdo->prepare($query);
   $stm->execute([$user_id]);
-  return $stm->fetchAll(PDO::FETCH_ASSOC); 
+  return $stm->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function fetch_student_answer_byid($pdo, $id) {
+function fetch_student_answer_byid($pdo, $id)
+{
   $query = "SELECT * FROM reponses WHERE id = ?";
   $stm = $pdo->prepare($query);
   $stm->execute([$id]);
   return $stm->fetch(PDO::FETCH_ASSOC);
 }
 
-function fetch_student_answer_byquestionid($pdo, $user_id, $question_id) {
+function fetch_student_answer_byquestionid($pdo, $user_id, $question_id)
+{
   $query = "SELECT * FROM reponses WHERE question_id = ? and `user_id` = ?";
   $stm = $pdo->prepare($query);
   $stm->execute([$question_id, $user_id]);
   return $stm->fetch(PDO::FETCH_ASSOC);
 }
 
-function insert_student_answer($pdo, $reponse) {
+function insert_student_answer($pdo, $reponse)
+{
   $query = "INSERT INTO reponses (`user_id`, question_id, reponse, note, date_rep, est_corrige,	date_correction, ip_addr) 
   VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
   $stm = $pdo->prepare($query);
@@ -300,7 +334,8 @@ function insert_student_answer($pdo, $reponse) {
   return $pdo->lastInsertId();
 }
 
-function update_student_answer($pdo, $reponse) {
+function update_student_answer($pdo, $reponse)
+{
   $query = "UPDATE reponses 
   SET 
     reponse = ?, 
@@ -321,4 +356,3 @@ function update_student_answer($pdo, $reponse) {
     $reponse['id']
   ]);
 }
-

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluation des travaux</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+</head>
+
+<body>
+  <div id="app">
+    <main class="container">
+      <div class="my-2" v-if="mode == 'selectDate'">
+        <div class="row">
+          <div class="col-sm-6">
+            <select name="dates_list" id="dates_list" class="form-control" v-model="selectedDate">
+              <option value="">-</option>
+              <option v-for="(date, i) in dates" v-bind:value="date.date_rep">{{date.date_rep}} -
+                {{date.nb_corriges}}/{{date.nb_reponses}}</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn btn-secondary" v-bind:disabled="selectedDate == ''"
+              v-on:click.prevent="onDateSelectedClicked()">Select date</button>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="mode == 'correction'">
+        <div class="card my-2" v-for="(reponse, index) in filtre">
+          <div class="card-body">
+            <h2 class="text-center">Answer {{index+1}} / {{filtre.length}}
+              ({{reponse.est_corrige ? 'Evaluated' : 'Not evaluated'}})</h2>
+            <h4>Student</h4>
+            <p>{{reponse.nom_prenom}}</p>
+            <h4>Question</h4>
+            <p>{{reponse.question}}</p>
+            <h4>Model Answer</h4>
+            <p>{{reponse.reponse_modele}}</p>
+            <h4>Student's answer</h4>
+            <p><textarea v-model="reponse.reponse" class="form-control"></textarea></p>
+            <h4>Mark</h4>
+            <p>
+              <input type="number" min="0.0" max="1.0" step="0.25" v-model="reponse.note">
+              <label class="switch">
+                <input type="checkbox" v-model="reponse.est_corrige">
+                <span class="slider round"></span>
+              </label>
+            </p>
+
+            <div class="my-3">
+              <button class="btn btn-primary" v-on:click.prevent="onEvaluateClicked(index)">Evaluate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/vue.min.js"></script>
+  <script src="assets/apps/evaluation.js"></script>
+</body>
+
+</html>

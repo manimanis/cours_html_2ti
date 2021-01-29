@@ -20,7 +20,7 @@ require_once 'dbop.php';
 
 $data = ['error' => false, 'data' => []];
 
-if ($op == 'dates') {
+if ($op == 'dates_list') {
   $data['data']['dates'] = fetch_dates_reponses($pdo);
 } else if ($op == 'rep_by_page') {
   $est_corrige = (!key_exists("est_corrige", $_GET)) ? false : ($_GET['est_corrige'] == 'true');
@@ -80,6 +80,19 @@ if ($op == 'dates') {
   $data['data']['logins'] = fetch_logins_byids($pdo, $json);
 } else if ($op == 'delete_logins') {
   $data['data']['logins'] = delete_logins($pdo, $json);
+} else if ($op == 'reponses_by_date') {
+  $start_date = $_GET['date'];
+  $data['data']['reponses'] = fetch_reponses_bydate($pdo, $start_date);
+} else if ($op == 'update_mark') {
+  $reponse = [
+    'id' => intval($json['id']),
+    'reponse' => $json['reponse'],
+    'est_corrige' => intval($json['est_corrige']),
+    'date_correction' => intval($json['est_corrige']) ? date("Y-m-d H:i:s") : null,
+    'note' => doubleval($json['note'])
+  ];
+  update_reponse($pdo, $reponse);
+  $data['data']['reponse'] = fetch_reponse_byid($pdo, $reponse['id']);
 }
 
 echo json_encode($data);
