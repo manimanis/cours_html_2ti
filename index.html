@@ -293,6 +293,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
             href="assets/downloads/computer_w_html.zip">Fichiers complets</a></p>
       </section>
     </article>
+
     <article>
       <h2>Séance 2</h2>
 
@@ -707,6 +708,309 @@ footer {
     color: #fff;
 }</code></pre>
         </div>
+      </section>
+    </article>
+
+    <article>
+      <h2>Séance 3</h2>
+
+      <section>
+        <h3>Modèle de boite (Box model)</h3>
+
+        <h4>Présentation</h4>
+        <p>Chaque élément HTML est considéré, en CSS, comme étant une boite qui possède :</p>
+        <ul>
+          <li><strong>Un contenu (content)</strong> : représente une image ou un texte affichés;</li>
+          <li><strong>Des marges intérieures (padding)</strong> : un espace transparent entre les bordures de l'élément
+            et son contenu;
+          </li>
+          <li><strong>Une bordure (border)</strong></li>
+          <li><strong>Une marge extérieure (margin</strong>) : un espace transparent qui sépare l'élément courant de ses
+            voisins.</li>
+        </ul>
+
+        <div>
+          <figure>
+            <img src="images/box-model.png" alt="Modèle de boite">
+            <figcaption>Modèle de boite</figcaption>
+          </figure>
+        </div>
+
+        <h4>Exemple</h4>
+
+        <p>L'élément <strong>div</strong> suivant possède :</p>
+
+        <ul>
+          <li>une marge intérieure (padding) de 20px</li>
+          <li>une bordure rouge de 10px</li>
+          <li>une marge extérieure (margin) de 30px</li>
+        </ul>
+
+        <div style="margin: 30px; border: 10px solid red; padding: 20px; background-color: blueviolet; color: #fff;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </div>
+
+        <p>Le code HTML correspondant peut ressembler à ce qui suit :</p>
+        <div>
+          <pre><code class="language-html">&lt;div class=&quot;exemple&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum.&lt;/div&gt;</code></pre>
+        </div>
+
+        <p>La règle CSS utilisée pour le mettre en forme est comme suit :</p>
+        <div>
+          <pre><code class="language-css">.exemple {
+  /* box model */
+  margin: 30px; 
+  border: 10px solid red; 
+  padding: 20px;
+  /* couleurs */
+  color: #fff;
+  background-color: blueviolet;
+}</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>Types de balises</h3>
+
+        <h4>Présentation</h4>
+        <p>En HTML, les balises peuvent être classées selon leur mise en page (layout). Ainsi on distingue deux types de
+          balises :</p>
+        <ul>
+          <li>Les <strong>balises de bloc (block elements)</strong> qui commencent toujours sur une nouvelle ligne et
+            qui s'étendent sur toute la largeur disponible.
+            <p>Exemples : p, h1, div, footer, main, aside, etc.</p>
+          </li>
+          <li>Les <strong>balises en ligne (inline elements)</strong> qui prennent uniquement l'espace qui leur est
+            nécessaire,
+            sans nécessiter obligatarement le retour à la ligne.
+            <p>Exemples : b, u, i, strong, img, etc.</p>
+          </li>
+        </ul>
+
+        <h4>Exemples</h4>
+
+        <p>Un paragraphe &lt;p&gt;...&lt;/p&gt; est un élément de bloc, ainsi chaque paragraphe commence dans une
+          nouvelle ligne et s'étend sur
+          toute la largeur qui lui est disponible.</p>
+        <div class="border border-dark p-2 my-2">
+          <p>Premier paragraphe</p>
+          <p class="border border-danger">Deuxième paragraphe</p>
+          <p>Troisième paragraphe</p>
+        </div>
+
+        <p>Un élément gras &lt;b&gt;...&lt;/b&gt; s'étend uniquement sur l'espace qui lui est nécessaire et ne commence
+          pas dans une nouvelle ligne.</p>
+        <div class="border border-dark p-2 my-2">
+          <p>Un texte en <b class="border border-danger">gras</b>.</p>
+        </div>
+
+      </section>
+
+      <section>
+        <h3>Les liens hypertextes (HTML + CSS)</h3>
+
+        <p>On souhaite concevoir un site Web, qui présente des recettes de gâteaux, composé de quatre pages.</p>
+
+        <p>L'objectif de ce site est de montrer l'utilisation des trois <a href="#section-3-1">types de liens</a>
+          étudiés dans la séance 2.</p>
+
+        <div class="d-print-none text-center">
+          <p>La vidéo suivante explique ce qu'il faudra faire.</p>
+          <video controls>
+            <source src="videos/liens.mp4" type="video/mp4">
+            <source src="videos/liens.mp4.webm" type="video/webm">
+          </video>
+        </div>
+
+        <div class="d-print-none text-center">
+          <p>La vidéo suivante explique comment le faire.</p>
+          <video controls>
+            <source src="videos/liens_how_to.mp4" type="video/mp4">
+            <source src="videos/liens_how_to.mp4.webm" type="video/webm">
+          </video>
+        </div>
+
+        <p>Cliquer sur les miniatures pour les agrandir et voir la mise en forme qu'on souhaite appliquer à chacune des
+          pages.</p>
+
+        <div class="row">
+          <div class="col-sm-6 col-xl-3">
+            <a href="images/recettes_final.jpg" target="_blank" rel="noopener noreferrer">
+              <img src="images/recettes_final-mini.jpg" alt="Page1">
+            </a>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <a href="images/gateaux_p2.png" target="_blank" rel="noopener noreferrer">
+              <img src="images/gateaux_p2-mini.png" alt="">
+            </a>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <a href="images/gateaux_p3.png" target="_blank" rel="noopener noreferrer">
+              <img src="images/gateaux_p3-mini.png" alt="">
+            </a>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <a href="images/gateaux_p4.png" target="_blank" rel="noopener noreferrer">
+              <img src="images/gateaux_p4-mini.png" alt="">
+            </a>
+          </div>
+        </div>
+
+        <h4>Travail demandé</h4>
+
+        <ol>
+          <li>Télécharger une version complète des fichiers html, sans feuilles de styles CSS : <a
+              href="assets/downloads/recettes_w_html.zip">Fichiers HTML et images</a></li>
+          <li>Ouvrir le fichier <strong>index.html</strong> dans VSC.</li>
+          <li>Ce fichier comporte trois <a href="#section-3-1">types de liens</a>, on demande de les compléter :
+            <ul>
+              <li>Nommés : pour se déplacer à l'intérieur de la page</li>
+              <li>Internes : pour accéder à des ressources dans un même domaine</li>
+              <li>Externes : pour accéder à des ressources dans d'autres domaines</li>
+            </ul>
+          </li>
+          <li>
+            <p>Mettre en forme le fichier <strong>index.html</strong> (Partie CSS). Le choix des couleurs ainsi que la
+              disposition des objets sont laissés au libre choix de l'élève.</p>
+
+            <p>La mise en forme devra inclure au moins 10 règles CSS pour les types de sélecteurs suivants : </p>
+            <ul>
+              <li>Elements, exemples : body, main, aside, header, footer, etc.</li>
+              <li>Classes, exemples : .infos, .liens</li>
+            </ul>
+
+            <p>Cependant, les règles de la mise en forme devront inclure, au moins, les propriétés suivantes :</p>
+            <ul>
+              <li>font-size</li>
+              <li>font-family</li>
+              <li>margin</li>
+              <li>padding</li>
+              <li>color</li>
+              <li>background-color</li>
+              <li>text-align</li>
+              <li>border</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>Tunisian Flag (CSS)</h3>
+
+        <p>Nous voulons dessiner le drapeau tunisien afin de s'exercer sur les marges intérieures (padding) et les
+          marges extérieures (margin).</p>
+
+        <div>
+          <figure>
+            <img src="images/tn-flag.png" alt="Drapeau Tunisien">
+            <figcaption>Drapeau Tunisien</figcaption>
+          </figure>
+        </div>
+
+        <ol>
+          <li>
+            <p>Copier/Coller le code HTML suivant dans une page vide.</p>
+
+            <div>
+              <pre><code class="language-html">&lt;div class=&quot;external-box&quot;&gt;
+  &lt;div class=&quot;white-circle&quot;&gt;
+    &lt;div class=&quot;crescent-external&quot;&gt;
+      &lt;div class=&quot;crescent-internal&quot;&gt;
+        &lt;div class=&quot;star&quot;&gt;&starf;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>Commençons par le sélecteur de classes <code>.star</code>.</p>
+            <div>
+              <pre><code class="language-css">.star {
+  color: #f00; /* couleur de texte rouge */
+  text-align: center; /* texte centré */
+  line-height: 130px; /* hauteur d'une ligne de texte 130px */
+  font-size: 100px;   /* taille de la police 100px */
+  transform: rotate(22.5deg); /* tourner de 22.5° */
+}</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>L'étoile est logée dans un croissant de couleur rouge. Le croissant n'est autre que la superposition de
+              deux cercles.</p>
+            <div>
+              <pre><code class="language-css">/* Cercle blanc contenant l'étoile */
+.crescent-internal {
+  position: absolute;     /* positionner relativement à .crescent external */
+  background-color: #fff; /* couleur de remplissage blanche */
+  width: 130px;           /* largeur */
+  height: 130px;          /* hauteur */
+  border-radius: 50%;     /* forme circulaire */
+  top: 15px;              /* déplacer en bas de 15px */
+  right: -5px;            /* déplacer à droite de 5px*/
+}
+
+.crescent-external {
+  position: relative;     /* Indique que les éléments positionnés absolute 
+                             seront relativement à cet élément */
+  background-color: #f00; /* couleur de remplissage rouge */
+  width: 160px;           /* largeur */
+  height: 160px;          /* hauteur */
+  border-radius: 50%;     /* forme circulaire */
+}</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>Le croissant rouge est centré dans un cercle blanc plus grand.</p>
+            <div>
+              <pre><code class="language-css">.white-circle {
+  background-color: #fff; /* remplissage en blanc */
+  width: 160px;           /* largeur */
+  height: 160px;          /* hauteur */
+  padding: 20px;          /* marge intérieure */
+  border-radius: 50%;     /* forme arrondie */
+}</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>Le tout tient à l'intérieur d'un rectangle rouge.</p>
+            <div>
+              <pre><code class="language-css">.external-box {
+  background-color: #f00; /* remplissage en rouge */
+  width: 200px;           /* largeur */
+  height: 200px;          /* hauteur */
+  padding: 50px 100px;    /* marges intérieures 
+                             haut/bas 50 px et 
+                             droite/gauche 100px 
+                             pour obtenir une forme rectangulaire */
+  margin: calc(50vh - 150px) auto; /* marges extérieures pour centrer 
+                                      dans la page*/
+}</code></pre>
+            </div>
+          </li>
+          <li>Ne pas oublier d'enlever les marges intérieures et extérieures.
+            <div>
+              <pre><code class="language-css">body {
+  margin: 0;
+  padding: 0;
+}</code></pre>
+            </div>
+          </li>
+        </ol>
+
+
+
       </section>
     </article>
   </main>

@@ -124,6 +124,24 @@ $(() => {
         displaySection(+href_parts[2] - 1);
       }
     });
+
+  const othersLinks = $('a')
+    .each(function () {
+      const link = $(this);
+      const href = link.attr('href');
+      if (href.startsWith('#section')) {
+        link.click(e => {
+          // e.preventDefault();
+          const link = $(e.currentTarget);
+          const href = link.attr('href');
+          const href_parts = href.split('-');
+          if (href_parts.length >= 3) {
+            displayArticle(+href_parts[1] - 1);
+            displaySection(+href_parts[2] - 1);
+          }
+        });
+      }
+    });
   displayArticle(art_obj.article_index);
   displaySection(art_obj.section_index);
 });
