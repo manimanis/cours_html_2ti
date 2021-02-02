@@ -1073,6 +1073,17 @@ footer {
             </div>
           </li>
         </ol>
+
+        <h4>Travail demandé</h4>
+
+        <p>Exploiter le code ci-dessus pour dessiner le drapeau tunisien sous cette forme.</p>
+
+        <div>
+          <figure>
+            <img src="images/Triple-Tunisian-Flags.png" alt="Trois Drapeaux Tunisiens">
+            <figcaption>Trois Drapeaux Tunisiens</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="p-break">
@@ -1109,6 +1120,175 @@ footer {
   &lt;div class=&quot;bande3&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
         </div>
+      </section>
+    </article>
+
+    <article>
+      <h2>Séance 4</h2>
+
+      <section>
+        <h3>Les formulaires</h3>
+
+        <p>Pour s'inscrire sur un site Web, pour se connecter à Facebook, pour répondre à une enquête, il faut remplir
+          un formulaire.</p>
+
+        <p>Un formulaire est utilisé pour recueillir les informations des utilisateurs d'un site Web ou d'une
+          application Web.</p>
+
+        <p>Le langage HTML définit les composants du formulaire les plus basiques. Et il existe, aussi, beaucoup de
+          bibliothèques qui offrent des composants personnalisées.</p>
+
+        <p>Le formulaire suivant est définit uniquement à l'aide du langage HTML.</p>
+
+        <style>
+          #formulaire input {
+            width: initial;
+            border-radius: initial;
+            margin: initial;
+            box-sizing: content-box;
+          }
+        </style>
+        <div id="formulaire" class="p-2 my-2 border border-dark bg-light">
+          <form action="destination.php" method="post">
+            <div>
+              <label for="np">Nom & Prénom</label>
+              <input id="np" name="np" type="text" placeholder="Votre nom et prénom">
+            </div>
+            <div>
+              <label for="mp">Mot de passe</label>
+              <input id="mp" name="mp" type="password" placeholder="Votre mot de passe">
+            </div>
+            <div>
+              <label for="em">Email</label>
+              <input id="em" name="em" type="email" placeholder="Votre email">
+            </div>
+            <div>
+              <label for="age">Age</label>
+              <input id="age" name="age" type="age" min="0" max="100" type="number" placeholder="Votre age">
+            </div>
+            <div>
+              <div>Combien de fruits mangez-vous par jour ?</div>
+              <label>
+                <input type="radio" name="fruit" id="fruits-0" value="0">
+                Aucun</label>
+              <label>
+                <input type="radio" name="fruit" id="fruits-1" value="1">
+                Un seul
+              </label>
+              <label>
+                <input type="radio" name="fruit" id="fruits-2" value="2">
+                Deux
+              </label>
+              <label>
+                <input type="radio" name="fruit" id="fruits-m" value=">2">
+                Plus de deux
+              </label>
+            </div>
+            <div>
+              <label for="favori">Votre fruit favori est :</label>
+              <select name="favori" id="favori" size="4">
+                <option value="Pomme">Pomme</option>
+                <option value="Banane">Banane</option>
+                <option value="Orange">Orange</option>
+                <option value="Poire">Poire</option>
+              </select>
+            </div>
+            <div>
+              <label for="qst">Pourquoi vous vous mettez au régime</label>
+              <textarea id="qst" name="qst" placeholder="Votre age"></textarea>
+            </div>
+            <div>
+              <button type="submit">S'inscrire</button>
+              <input type="reset" value="Effacer">
+            </div>
+          </form>
+        </div>
+
+        <p>Le code HTML nécessaire pour générer ce formulaire est le suivant :</p>
+
+        <div>
+          <pre><code class="language-html">&lt;form action=&quot;destination.php&quot; method=&quot;post&quot;&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;np&quot;&gt;Nom &amp; Pr&eacute;nom&lt;/label&gt;
+    &lt;input id=&quot;np&quot; name=&quot;np&quot; type=&quot;text&quot; placeholder=&quot;Votre nom et pr&eacute;nom&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;mp&quot;&gt;Mot de passe&lt;/label&gt;
+    &lt;input id=&quot;mp&quot; name=&quot;mp&quot; type=&quot;password&quot; placeholder=&quot;Votre mot de passe&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;em&quot;&gt;Email&lt;/label&gt;
+    &lt;input id=&quot;em&quot; name=&quot;em&quot; type=&quot;email&quot; placeholder=&quot;Votre email&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;age&quot;&gt;Age&lt;/label&gt;
+    &lt;input id=&quot;age&quot; name=&quot;age&quot; type=&quot;age&quot; min=&quot;0&quot; max=&quot;100&quot; 
+           type=&quot;number&quot; placeholder=&quot;Votre age&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div&gt;Combien de fruits mangez-vous par jour ?&lt;/div&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;radio&quot; name=&quot;fruit&quot; id=&quot;fruits-0&quot; value=&quot;0&quot;&gt;
+      Aucun&lt;/label&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;radio&quot; name=&quot;fruit&quot; id=&quot;fruits-1&quot; value=&quot;1&quot;&gt;
+      Un seul
+    &lt;/label&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;radio&quot; name=&quot;fruit&quot; id=&quot;fruits-2&quot; value=&quot;2&quot;&gt;
+      Deux
+    &lt;/label&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;radio&quot; name=&quot;fruit&quot; id=&quot;fruits-m&quot; value=&quot;&gt;2&quot;&gt;
+      Plus de deux
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;favori&quot;&gt;Votre fruit favori est :&lt;/label&gt;
+    &lt;select name=&quot;favori&quot; id=&quot;favori&quot; size=&quot;4&quot;&gt;
+      &lt;option value=&quot;Pomme&quot;&gt;Pomme&lt;/option&gt;
+      &lt;option value=&quot;Banane&quot;&gt;Banane&lt;/option&gt;
+      &lt;option value=&quot;Orange&quot;&gt;Orange&lt;/option&gt;
+      &lt;option value=&quot;Poire&quot;&gt;Poire&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;qst&quot;&gt;Pourquoi vous vous mettez au r&eacute;gime&lt;/label&gt;
+    &lt;textarea id=&quot;qst&quot; name=&quot;qst&quot; placeholder=&quot;Votre age&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button type=&quot;submit&quot;&gt;S&apos;inscrire&lt;/button&gt;
+    &lt;input type=&quot;reset&quot; value=&quot;Effacer&quot;&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <p>Le formulaire doit être tapé entre <strong>&lt;form&gt;...&lt;/form&gt;</strong>. Cette balise possède
+          plusieurs attributs importants :</p>
+        <ul>
+          <li><strong>action</strong> indique la ressource qui se chargera du traitement des données du formulaire.</li>
+          <li><strong>method</strong> indique la méthode à utiliser lors de la soumission du formulaire. Les deux
+            méthodes les plus utilisées sont : <ul>
+              <li><strong>GET</strong> les informations saisies seront ajoutées à l'adresse URL de la ressource
+                mentionnée dans l'attribut action.</li>
+              <li><strong>POST</strong> les informations saisies seront envoyées dans le corps de la requête et ne
+                seront pas visibles pour l'utilisateur.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>Travail Demandé</h4>
+
+        <p>Identifier les balises utilisées pour générer le composant :</p>
+        <ol>
+          <li>Champ de texte, pour la saisie du nom et du prénom.</li>
+          <li>Zone de texte, pour la saisie des informations sur plusieurs lignes.</li>
+          <li>Liste déroulante, pour sélectionner un choix parmi plusieurs options.</li>
+          <li>Bouton radio, pour faire un choix parmi d'autres, exemple le fruit favori.</li>
+          <li>Mot de passe, pour cacher les informations sensibles aux yeux indiscrets</li>
+          <li>Bouton de soumission, pour soumettre le formulaire.</li>
+          <li>Bouton de remise à zéro, pour effacer les champs du formulaire.</li>
+        </ol>
       </section>
     </article>
   </main>
