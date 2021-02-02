@@ -184,6 +184,12 @@ input:checked+.slider:before {
   figure img.h7cm {
     max-height: 7cm !important;
   }
+  figure img.h8cm {
+    max-height: 8cm !important;
+  }
+  figure img.h9cm {
+    max-height: 9cm !important;
+  }
   figure img.h10cm {
     max-height: 10cm !important;
   }

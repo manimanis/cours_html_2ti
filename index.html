@@ -96,7 +96,7 @@
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-        <h4 class="p-break">Explication</h4>
+        <h4>Explication</h4>
 
         <pre><code class="language-html">&lt;!DOCTYPE html&gt;</code></pre>
         <p>Indique au navigateur que la page utilise la version 5, selon W3C, du langage HTML</p>
@@ -131,14 +131,14 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         <p>Tout le contenu qui sera affiché dans le navigateur doit être écrit à l'intérieur de cette balise.</p>
       </section>
 
-      <section class="p-break">
+      <section>
         <h3>Les premières balises</h3>
 
         <p>Nous voulons concevoir la page web suivante :</p>
 
         <div>
           <figure>
-            <img src="images/page_sample.png" alt="Exemple de page Web">
+            <img src="images/page_sample.png" alt="Exemple de page Web" class="h7cm">
             <figcaption>Exemple de page Web</figcaption>
           </figure>
         </div>
@@ -151,7 +151,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
           <li>Des images</li>
         </ul>
 
-        <h4 class="p-break">Liste non ordonnée</h4>
+        <h4>Liste non ordonnée</h4>
 
         <p>Pour construire la liste :</p>
         <div>
@@ -160,7 +160,6 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
             <figcaption>Balises ul et li</figcaption>
           </figure>
         </div>
-
 
         <p>On peut écrire le code suivant:</p>
         <pre><code class="language-html">&lt;ul&gt;
@@ -249,7 +248,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
 &lt;/p&gt;</code></pre>
       </section>
 
-      <section>
+      <section class="p-break">
         <h3>Application</h3>
 
         <p>On veut concevoir un site composé de quatre pages web :</p>
@@ -355,7 +354,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         </p>
       </section>
 
-      <section>
+      <section class="p-break">
         <h3>Application 1</h3>
 
         <p>Ouvrir le site Web que nous avons commencé, puis :</p>
@@ -372,7 +371,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
             "computerXX_thumb.jpg", pour afficher une version plus grande de ces images dans une nouvelle page.
             <p>
             <figure>
-              <img src="images/resize-computer01.png" alt="Agrandir les images" class="h5cm">
+              <img src="images/resize-computer01.png" alt="Agrandir les images" class="h3cm">
               <figcaption>Agrandir les images</figcaption>
             </figure>
             </p>
@@ -380,7 +379,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
           <li>Refaire le même travail dans la page <strong>parts.html</strong> avec les composants de l'ordinateur.</li>
         </ol>
 
-        <h4 class="p-break">Solution</h4>
+        <h4>Solution</h4>
         <ol>
           <li>Les liens suivants sont ajoutés dans toutes les pages.
             <div class="d-print-none">
@@ -441,7 +440,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         </ol>
       </section>
 
-      <section class="p-break">
+      <section>
         <h3>Balises sémantiques</h3>
 
         <h4>Introduction</h4>
@@ -452,7 +451,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
 
         <div>
           <figure>
-            <img src="images/semantic_tags.png" alt="Balises sémantiques" class="h7cm">
+            <img src="images/page_structure.png" alt="Balises sémantiques" class="h7cm">
             <figcaption>Balises sémantique</figcaption>
           </figure>
         </div>
@@ -504,7 +503,7 @@ content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
         </div>
       </section>
 
-      <section class="p-break">
+      <section>
         <h3>Feuilles de style (CSS)</h3>
 
         <h4>Introduction</h4>
@@ -665,7 +664,7 @@ footer {
   /* couleur de texte blanche */
 }</code></pre>
 
-        <h4 class="p-break">Correction</h4>
+        <h4>Correction</h4>
         <div class="d-print-none">
           <figure>
             <img src="images/css_computers.png" alt="Correction du code CSS" class="h10cm">
@@ -757,13 +756,7 @@ footer {
         <p>Le code HTML correspondant peut ressembler à ce qui suit :</p>
         <div>
           <pre><code class="language-html">&lt;div class=&quot;exemple&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-dolore eu fugiat nulla pariatur. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-officia deserunt mollit anim id est laborum.&lt;/div&gt;</code></pre>
+...&lt;/div&gt;</code></pre>
         </div>
 
         <p>La règle CSS utilisée pour le mettre en forme est comme suit :</p>
@@ -814,10 +807,82 @@ officia deserunt mollit anim id est laborum.&lt;/div&gt;</code></pre>
         <div class="border border-dark p-2 my-2">
           <p>Un texte en <b class="border border-danger">gras</b>.</p>
         </div>
-
       </section>
 
       <section>
+        <h3>Les sélecteurs CSS</h3>
+
+        <p>Une règle CSS est appliquée pour un sélecteur donné. Ainsi, on distingue une variété de sélecteurs dont les
+          plus importants sont :</p>
+        <ul>
+          <li>Sélecteur des éléments (element selector)</li>
+          <li>Sélecteur des classes (classe selector)</li>
+          <li>Sélecteur des identifiant (id selector)</li>
+        </ul>
+        <p>Pour plus de précision, ces sélecteurs peuvent être combinés.</p>
+
+        <h4>Sélecteur d'éléments</h4>
+
+        <p>Pour définir la mise en forme de tous les paragraphes on peut écrire :</p>
+        <div>
+          <pre><code class="language-css">p {
+  color: white;
+  background-color: black;
+}</code></pre>
+        </div>
+
+        <p>Pour définir uniquement la mise en forme des paragraphes qui sont des descendants de <strong>main</strong>,
+          par exemple, on écrit :</p>
+        <div>
+          <pre><code class="language-css">main p {
+  color: yellow;
+  font-weight: bold;
+}</code></pre>
+        </div>
+
+        <h4>Sélecteur de classes</h4>
+        <p>Supposons que l'on souhaite que certains paragraphes d'un texte soient centrés, et que d'autres soient en
+          gras. Enfin, pourquoi pas ne pas appliquer cette combinaison à d'autres paragraphes.</p>
+        <p>Dans ce cas, il faudra utiliser des sélecteurs de classes qu'on devra définir selon notre besoin.</p>
+        <div>
+          <pre><code class="language-css">.center {
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}</code></pre>
+        </div>
+
+        <p>Dans le code HTML, ces styles sont appliqués en utilisant l'attribut <code>class</code> des éléments.</p>
+
+        <div>
+          <pre><code class="language-html">&lt;!-- Centrer le paragraphe --&gt;
+&lt;p class=&quot;center&quot;&gt;...&lt;/p&gt;
+&lt;!-- Mettre en gras --&gt;
+&lt;p class=&quot;bold&quot;&gt;...&lt;/p&gt;
+&lt;!-- Centrer le paragraphe et le mettre en gras --&gt;
+&lt;p class=&quot;center bold&quot;&gt;...&lt;/p&gt;</code></pre>
+        </div>
+
+        <h4>Sélecteur d'identifiant</h4>
+
+        <p>Un élément d'une page HTML peuvent avoir un <code>id</code> qui doit être unique dans une page. Exemple :
+        </p>
+
+        <div>
+          <pre><code class="language-html">&lt;div id=&quot;cercle-bleu&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+
+        <p>Cet élément est ensuite accessible grâce au sélecteur <code>#cercle-bleu</code> en CSS :</p>
+        <div>
+          <pre><code class="language-css">#cercle-bleu {
+  background-color: blue;
+  border-radius: 50%;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="p-break">
         <h3>Les liens hypertextes (HTML + CSS)</h3>
 
         <p>On souhaite concevoir un site Web, qui présente des recettes de gâteaux, composé de quatre pages.</p>
@@ -847,22 +912,22 @@ officia deserunt mollit anim id est laborum.&lt;/div&gt;</code></pre>
         <div class="row">
           <div class="col-sm-6 col-xl-3">
             <a href="images/recettes_final.jpg" target="_blank" rel="noopener noreferrer">
-              <img src="images/recettes_final-mini.jpg" alt="Page1">
+              <img src="images/recettes_final-mini.jpg" alt="Page1" class="h2cm">
             </a>
           </div>
           <div class="col-sm-6 col-xl-3">
             <a href="images/gateaux_p2.png" target="_blank" rel="noopener noreferrer">
-              <img src="images/gateaux_p2-mini.png" alt="">
+              <img src="images/gateaux_p2-mini.png" alt="" class="h2cm">
             </a>
           </div>
           <div class="col-sm-6 col-xl-3">
             <a href="images/gateaux_p3.png" target="_blank" rel="noopener noreferrer">
-              <img src="images/gateaux_p3-mini.png" alt="">
+              <img src="images/gateaux_p3-mini.png" alt="" class="h2cm">
             </a>
           </div>
           <div class="col-sm-6 col-xl-3">
             <a href="images/gateaux_p4.png" target="_blank" rel="noopener noreferrer">
-              <img src="images/gateaux_p4-mini.png" alt="">
+              <img src="images/gateaux_p4-mini.png" alt="" class="h2cm">
             </a>
           </div>
         </div>
@@ -905,7 +970,7 @@ officia deserunt mollit anim id est laborum.&lt;/div&gt;</code></pre>
         </ol>
       </section>
 
-      <section>
+      <section class="p-break">
         <h3>Tunisian Flag (CSS)</h3>
 
         <p>Nous voulons dessiner le drapeau tunisien afin de s'exercer sur les marges intérieures (padding) et les
@@ -913,7 +978,7 @@ officia deserunt mollit anim id est laborum.&lt;/div&gt;</code></pre>
 
         <div>
           <figure>
-            <img src="images/tn-flag.png" alt="Drapeau Tunisien">
+            <img src="images/tn-flag.png" alt="Drapeau Tunisien" class="h3cm">
             <figcaption>Drapeau Tunisien</figcaption>
           </figure>
         </div>
@@ -1008,9 +1073,42 @@ officia deserunt mollit anim id est laborum.&lt;/div&gt;</code></pre>
             </div>
           </li>
         </ol>
+      </section>
 
+      <section class="p-break">
+        <h3>Drapeaux à trois bandes</h3>
 
+        <p>On demande de dessiner les drapeaux suivants :</p>
 
+        <div>
+          <figure>
+            <img src="images/three_bands_flags.png" alt="Drapeaux à trois bandes" class="h5cm">
+            <figcaption>Drapeaux à trois bandes</figcaption>
+          </figure>
+        </div>
+
+        <p>Voici le code HTML nécessaire. <b><u>Vous n'êtes pas autorisés à ajouter d'autres éléments hormis la
+              structure minimale d'une page Web et l'importation d'une feuille de style.</u></b></p>
+
+        <div>
+          <pre><code class="language-html">&lt;div id=&quot;belgium&quot; class=&quot;flag&quot;&gt;
+  &lt;div class=&quot;bande1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bande2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bande3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;germany&quot; class=&quot;flag&quot;&gt;
+  &lt;div class=&quot;bande1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bande2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bande3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;france&quot; class=&quot;flag&quot;&gt;
+  &lt;div class=&quot;bande1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bande2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bande3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
       </section>
     </article>
   </main>
