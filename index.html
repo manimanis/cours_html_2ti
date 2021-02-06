@@ -1183,6 +1183,69 @@ footer {
             <figcaption>Trois Drapeaux Tunisiens</figcaption>
           </figure>
         </div>
+
+        <h4>Correction</h4>
+
+        <p>Dupliquer le code HTML du drapeau tunisien deux fois.</p>
+
+        <div>
+          <pre><code class="language-html">&lt;div class=&quot;many-flags&quot;&gt;
+  &lt;div class=&quot;external-box&quot;&gt;
+    &lt;div class=&quot;white-circle&quot;&gt;
+      &lt;div class=&quot;crescent-external&quot;&gt;
+        &lt;div class=&quot;crescent-internal&quot;&gt;
+          &lt;div class=&quot;star&quot;&gt;&starf;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;external-box&quot;&gt;
+    &lt;div class=&quot;white-circle&quot;&gt;
+      &lt;div class=&quot;crescent-external&quot;&gt;
+        &lt;div class=&quot;crescent-internal&quot;&gt;
+          &lt;div class=&quot;star&quot;&gt;&starf;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;external-box&quot;&gt;
+    &lt;div class=&quot;white-circle&quot;&gt;
+      &lt;div class=&quot;crescent-external&quot;&gt;
+        &lt;div class=&quot;crescent-internal&quot;&gt;
+          &lt;div class=&quot;star&quot;&gt;&starf;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <p>Modifier le sélecteur <code>.external-box</code>.</p>
+
+        <div>
+          <pre><code class="language-css">.external-box {
+  background-color: #f00;
+  width: 200px;
+  height: 200px;
+  padding: 50px 100px;
+  /* modifier les marges */
+  margin: calc(50vh - 150px) -50px;
+  /* faire tourner le drapeau de -90 degrés */
+  transform: rotate(270deg);
+}</code></pre>
+        </div>
+
+        <p>Ajouter le sélecteur <code>.many-flags</code> qui regroupe les trois drapeaux sur une seule ligne</p>
+
+        <div>
+          <pre><code class="language-css">.many-flags {
+  display: flex; /* Tous les drapeaux sur une seule ligne */
+  margin: auto;  /* center les drapeaux horizontalement */
+  width: 900px;  /* la largeur des trois drapeaux 300px x 3 = 900px*/
+}</code></pre>
+        </div>
       </section>
 
       <section class="p-break">
